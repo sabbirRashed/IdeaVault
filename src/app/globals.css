@@ -2,8 +2,6 @@
 @import "@heroui/styles";
 
 
-/* SparkNest Theme — CSS Variables (Light / Dark) */
-
 :root {
     /* Primary — Spark (Orange) */
     --color-primary: #F97316;
