@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@heroui/react";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 const slides = [
     {
@@ -11,7 +12,7 @@ const slides = [
         subtitle:
             "Post your startup idea in minutes and get real feedback from a community that builds, not just talks.",
         cta: "Share Your Idea",
-        illustration:
+        image:
             "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop",
     },
     {
@@ -20,7 +21,7 @@ const slides = [
         subtitle:
             "Explore hundreds of startup ideas across tech, health, education, and more — before they become headlines.",
         cta: "Explore Ideas",
-        illustration:
+        image:
             "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=800&auto=format&fit=crop",
     },
     {
@@ -29,7 +30,7 @@ const slides = [
         subtitle:
             "Get comments, questions, and honest reactions from people who actually care about building things.",
         cta: "Join the Conversation",
-        illustration:
+        image:
             "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop",
     },
 ];
@@ -55,16 +56,11 @@ export default function Hero() {
 
     return (
         <section className=" bg-[url('/assets/hero.png')] bg-center bg-cover inset-0 relative w-full h-[70vh]   overflow-hidden">
-            {/* Background image */}
-            {/* <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: `url(${BACKGROUND_IMAGE})` }}
-            /> */}
-            {/* Dark overlay so text is readable */}
+
             <div className="absolute inset-0 bg-black/60" />
 
             {/* Card */}
-            <div className="relative h-full flex items-end justify-center px-4 pb-12">
+            <div className=" h-full flex justify-center items-end px-4 pb-12">
                 <div className="w-full max-w-3xl">
                     <AnimatePresence mode="wait">
                         <motion.div
@@ -76,36 +72,34 @@ export default function Hero() {
                             transition={{ duration: 0.4 }}
                             className="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl p-8 flex flex-col sm:flex-row items-center gap-6"
                         >
-                            {/* Text + CTA */}
-                            <div className="flex-1 text-left">
+                            {/* Text and hero btn*/}
+                            <div className="text-left">
                                 <h1 className="text-3xl font-bold text-white">{slide.title}</h1>
                                 <p className="mt-3 text-white/80">{slide.subtitle}</p>
-                                <Button
-                                    color="primary"
-                                    radius="full"
-                                    endContent={<ArrowRight size={18} />}
-                                    className="mt-5 font-semibold"
+                                <Button 
+                                    className={'mt-5 font-semibold bg-(--color-primary) hover:bg-(--color-primary-hover) transition-colors duration-300'}
                                 >
                                     {slide.cta}
+                                    <ArrowRight size={18} />
                                 </Button>
                             </div>
 
-                            {/* Illustration */}
-                            <img
-                                src={slide.illustration}
-                                alt=""
-                                className="h-32 w-32 rounded-xl object-cover"
-                            />
+                            {/* image */}
+                            <Image src={slide.image}
+                            alt={slide.title}
+                            width={32}
+                            height={32}
+                            className="object-cover"></Image>
                         </motion.div>
                     </AnimatePresence>
 
                     {/* Dots to show which slide is active */}
                     <div className="flex justify-center gap-2 mt-4">
-                        {slides.map((s, i) => (
+                        {slides.map((slide, ind) => (
                             <button
-                                key={s.id}
-                                onClick={() => setIndex(i)}
-                                className={`h-2 w-2 rounded-full ${i === index ? "bg-primary" : "bg-white/40"
+                                key={slide.id}
+                                
+                                className={`h-2 w-2 rounded-full ${ind === index ? "bg-(--color-primary)" : "bg-white/40"
                                     }`}
                             />
                         ))}
