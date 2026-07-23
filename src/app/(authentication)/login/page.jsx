@@ -7,7 +7,7 @@ import { FcGoogle } from "react-icons/fc";
 
 const LoginPage = () => {
 
-    const handleLogin = (e)=>{
+    const handleLogin = (e) => {
         e.preventDefault();
 
         const formData = new FormData(e.currentTarget);
@@ -15,7 +15,7 @@ const LoginPage = () => {
         console.log(loginData);
     }
 
-    
+
     return (
         <div className='min-h-screen w-11/12 max-w-7xl mx-auto py-30'>
             <h2 className='text-center text-2xl md:text-3xl font-semibold tracking-wide'>Welcome Back</h2>
@@ -41,9 +41,21 @@ const LoginPage = () => {
 
                     <TextField
                         isRequired
-                        minLength={8}
+                        minLength={6}
                         name="password"
                         type="password"
+                        validate={(value) => {
+                            if (value.length < 6) {
+                                return "Password must be at least 6 characters";
+                            }
+                            if (!/[A-Z]/.test(value)) {
+                                return "Password must contain at least one uppercase letter";
+                            }
+                            if (!/[0-9]/.test(value)) {
+                                return "Password must contain at least one number";
+                            }
+                            return null;
+                        }}
                     >
                         <Label>Password</Label>
                         <Input
@@ -67,7 +79,7 @@ const LoginPage = () => {
                     <Separator className="flex-1" />
                 </div>
 
-                <Button  variant="outline" className="w-full rounded-full border border-(--color-primary)">
+                <Button variant="outline" className="w-full rounded-full border border-(--color-primary)">
                     <FcGoogle />
                     Sign Up With Google
                 </Button>

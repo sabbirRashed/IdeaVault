@@ -3,7 +3,7 @@ import React from 'react';
 
 export const Provider = ({children}) => {
     return (
-        <ThemeProvider attribute="class">
+        <ThemeProvider defaultTheme='light' enableSystem={false} attribute="class">
             {children}
         </ThemeProvider>
     );
