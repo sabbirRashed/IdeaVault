@@ -6,7 +6,7 @@ import { FcGoogle } from 'react-icons/fc';
 
 const RegisterPage = () => {
 
-    const handleForm = (e)=>{
+    const handleForm = (e) => {
         e.preventDefault();
 
         const formData = new FormData(e.currentTarget);
@@ -64,9 +64,21 @@ const RegisterPage = () => {
 
                     <TextField
                         isRequired
-                        minLength={8}
+                        minLength={6}
                         name="password"
                         type="password"
+                        validate={(value) => {
+                            if (value.length < 6) {
+                                return "Password must be at least 6 characters";
+                            }
+                            if (!/[A-Z]/.test(value)) {
+                                return "Password must contain at least one uppercase letter";
+                            }
+                            if (!/[0-9]/.test(value)) {
+                                return "Password must contain at least one number";
+                            }
+                            return null;
+                        }}
                     >
                         <Label>Password</Label>
                         <Input
