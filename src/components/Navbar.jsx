@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 
 
 const Navbar = () => {
-    const user = true;
+    const user = false;
     const pathName = usePathname();
     const { theme, setTheme } = useTheme();
     const isDark = theme === "dark";
@@ -18,7 +18,7 @@ const Navbar = () => {
     ];
 
     const privateLinks = [
-        { to: "/add-idea", label: "Add Idea" },
+        { to: "/add-ideas", label: "Add Idea" },
         { to: "/my-ideas", label: "My Ideas" },
         { to: "/my-interactions", label: "My Interactions" },
     ];
@@ -71,30 +71,34 @@ const Navbar = () => {
                         {
                             user ? <>
 
-                                <Avatar>
+                                <Avatar size="sm">
                                     <Avatar.Image alt="John Doe" />
                                     <Avatar.Fallback>JD</Avatar.Fallback>
                                 </Avatar>
                                 <Button
-                                size="sm"
+                                    size="sm"
                                     className={'bg-(--color-danger)'}
                                 // onPress={onLogout}
                                 >
                                     Log out
                                 </Button>
                             </> : <>
-                                <Button
-                                    size="sm"
-                                    className={'rounded-full btn-secondary transition-colors duration-300'}
-                                >
-                                    Log in
-                                </Button>
-                                <Button
-                                    size="sm"
-                                    className={'btn-primary transition-colors duration-300'}
-                                >
-                                    Sign up
-                                </Button>
+                                <Link href={'/login'}>
+                                    <Button
+                                        size="sm"
+                                        className={'rounded-full btn-secondary transition-colors duration-300'}
+                                    >
+                                        Log in
+                                    </Button>
+                                </Link>
+                                <Link href={'/register'}>
+                                    <Button
+                                        size="sm"
+                                        className={'btn-primary transition-colors duration-300'}
+                                    >
+                                        Register
+                                    </Button>
+                                </Link>
                             </>
                         }
                     </div>
