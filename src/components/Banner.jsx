@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@heroui/react";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const slides = [
     {
@@ -12,6 +13,7 @@ const slides = [
         subtitle:
             "Post your startup idea in minutes and get real feedback from a community that builds, not just talks.",
         cta: "Share Your Idea",
+         path: "/add-ideas",
         image:
             "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop",
     },
@@ -21,6 +23,7 @@ const slides = [
         subtitle:
             "Explore hundreds of startup ideas across tech, health, education, and more — before they become headlines.",
         cta: "Explore Ideas",
+         path: "/ideas",
         image:
             "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=800&auto=format&fit=crop",
     },
@@ -29,7 +32,8 @@ const slides = [
         title: "Great ideas deserve great feedback.",
         subtitle:
             "Get comments, questions, and honest reactions from people who actually care about building things.",
-        cta: "Join the Conversation",
+        cta: "Share Your Feedback",
+        path: "/ideas", 
         image:
             "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop",
     },
@@ -76,20 +80,22 @@ export default function Hero() {
                             <div className="text-left">
                                 <h1 className="text-3xl font-bold text-white">{slide.title}</h1>
                                 <p className="mt-3 text-white/80">{slide.subtitle}</p>
-                                <Button 
-                                    className={'mt-5 font-semibold btn-primary transition-colors duration-300'}
-                                >
-                                    {slide.cta}
-                                    <ArrowRight size={18} />
-                                </Button>
+                                <Link href={slide.path}>
+                                    <Button
+                                        className={'mt-5 font-semibold btn-primary transition-colors duration-300'}
+                                    >
+                                        {slide.cta}
+                                        <ArrowRight size={18} />
+                                    </Button>
+                                </Link>
                             </div>
 
                             {/* image */}
                             <Image src={slide.image}
-                            alt={slide.title}
-                            width={32}
-                            height={32}
-                            className="object-cover"></Image>
+                                alt={slide.title}
+                                width={200}
+                                height={200}
+                                className="object-cover w-full md:w-30 h-30"></Image>
                         </motion.div>
                     </AnimatePresence>
 
@@ -98,7 +104,7 @@ export default function Hero() {
                         {slides.map((slide, ind) => (
                             <button
                                 key={slide.id}
-                                
+
                                 className={`h-2 w-2 rounded-full ${ind === index ? "bg-(--color-primary)" : "bg-white/40"
                                     }`}
                             />
