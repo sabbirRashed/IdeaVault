@@ -1,9 +1,11 @@
 'use client'
 import { Avatar, Button, } from "@heroui/react";
-import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { FiMoon } from "react-icons/fi";
+import { IoSunnyOutline } from "react-icons/io5";
+import { SiUnacademy } from "react-icons/si";
 
 
 const Navbar = () => {
@@ -63,9 +65,9 @@ const Navbar = () => {
                         >
                             {
                                 isDark ?
-                                    <Sun className="text-amber-500 h-4 w-4 cursor-pointer" />
+                                    <IoSunnyOutline className="text-amber-500 h-5 w-5 cursor-pointer" />
 
-                                    : <Moon className="text-indigo-500 h-4 w-4 cursor-pointer" />
+                                    : <FiMoon className="text-indigo-500 h-5 w-5 cursor-pointer" />
                             }
                         </button>
                         {

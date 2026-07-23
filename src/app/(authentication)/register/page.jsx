@@ -1,9 +1,18 @@
+"use client"
 import { Button, Checkbox, FieldError, Form, Input, Label, Separator, TextField } from '@heroui/react';
 import Link from 'next/link';
 import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
 
 const RegisterPage = () => {
+
+    const handleForm = (e)=>{
+        e.preventDefault();
+
+        const formData = new FormData(e.currentTarget);
+        const registerData = Object.fromEntries(formData.entries());
+        console.log(registerData);
+    }
     return (
         <div className='min-h-screen w-11/12 max-w-7xl mx-auto py-30'>
             <h2 className='text-center text-2xl md:text-3xl font-semibold tracking-wide'>Let's build your nest</h2>
@@ -11,7 +20,7 @@ const RegisterPage = () => {
             <div className="border border-(--color-primary)! shadow-2xl! shadow-amber-600! rounded-2xl max-w-md mx-auto p-10 mt-6 space-y-4">
 
                 <Form
-                    // onSubmit={handleLogin}
+                    onSubmit={handleForm}
                     className="flex w-full flex-col gap-6" >
 
                     <TextField
@@ -23,7 +32,7 @@ const RegisterPage = () => {
                         <Label>Name</Label>
                         <Input
                             className={"rounded-full border border-(--color-primary)/60 shadow-none"}
-                            placeholder="Enter your email" />
+                            placeholder="Enter your name" />
                         <FieldError />
                     </TextField>
 
@@ -49,7 +58,7 @@ const RegisterPage = () => {
                         <Label>Image URL</Label>
                         <Input
                             className={"rounded-full border border-(--color-primary)/60 shadow-none"}
-                            placeholder="Enter your email" />
+                            placeholder="Enter your image link" />
                         <FieldError />
                     </TextField>
 

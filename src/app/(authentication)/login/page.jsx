@@ -14,6 +14,8 @@ const LoginPage = () => {
         const loginData = Object.fromEntries(formData.entries());
         console.log(loginData);
     }
+
+    
     return (
         <div className='min-h-screen w-11/12 max-w-7xl mx-auto py-30'>
             <h2 className='text-center text-2xl md:text-3xl font-semibold tracking-wide'>Welcome Back</h2>
