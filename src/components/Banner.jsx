@@ -77,7 +77,7 @@ export default function Hero() {
                                 <h1 className="text-3xl font-bold text-white">{slide.title}</h1>
                                 <p className="mt-3 text-white/80">{slide.subtitle}</p>
                                 <Button 
-                                    className={'mt-5 font-semibold bg-(--color-primary) hover:bg-(--color-primary-hover) transition-colors duration-300'}
+                                    className={'mt-5 font-semibold btn-primary transition-colors duration-300'}
                                 >
                                     {slide.cta}
                                     <ArrowRight size={18} />

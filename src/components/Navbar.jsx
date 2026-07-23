@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 
 
 const Navbar = () => {
-    const user = false;
+    const user = true;
     const pathName = usePathname();
     const { theme, setTheme } = useTheme();
     const isDark = theme === "dark";
@@ -55,7 +55,7 @@ const Navbar = () => {
 
                     </ul>
 
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-2 md:gap-4">
                         <Button
                             onPress={() => { setTheme(isDark ? "light" : "dark") }}
                             isIconOnly
@@ -63,8 +63,9 @@ const Navbar = () => {
                         >
                             {
                                 isDark ?
-                                    <Moon className="text-indigo-500 h-5 w-5" />
-                                    : <Sun className="text-amber-500 h-5 w-5" />
+                                    <Sun className="text-amber-500 h-4 w-4" />
+
+                                    : <Moon className="text-indigo-500 h-4 w-4" />
                             }
                         </Button>
                         {
@@ -75,6 +76,7 @@ const Navbar = () => {
                                     <Avatar.Fallback>JD</Avatar.Fallback>
                                 </Avatar>
                                 <Button
+                                size="sm"
                                     className={'bg-(--color-danger)'}
                                 // onPress={onLogout}
                                 >
@@ -82,13 +84,14 @@ const Navbar = () => {
                                 </Button>
                             </> : <>
                                 <Button
-                                    
-                                    className={'rounded-full bg-(--color-secondary) hover:bg-(--color-secondary-hover) transition-colors duration-300'}
+                                    size="sm"
+                                    className={'rounded-full btn-secondary transition-colors duration-300'}
                                 >
                                     Log in
                                 </Button>
                                 <Button
-                                    className={'bg-(--color-primary) hover:bg-(--color-primary-hover) transition-colors duration-300'}
+                                    size="sm"
+                                    className={'btn-primary transition-colors duration-300'}
                                 >
                                     Sign up
                                 </Button>
