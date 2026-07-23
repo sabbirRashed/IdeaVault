@@ -16,8 +16,8 @@ const LoginPage = () => {
     }
     return (
         <div className='min-h-screen w-11/12 max-w-7xl mx-auto py-30'>
-            <h2 className='text-center text-2xl md:text-3xl font-semibold tracking-wide'>Welcome back <br /> to your Nest</h2>
-            <p className='max-w-sm mx-auto text-center text-sm  text-[#6C696D] mt-1'>Log in to keep building on the ideas you've started - and see what the community's been up to.</p>
+            <h2 className='text-center text-2xl md:text-3xl font-semibold tracking-wide'>Welcome Back</h2>
+            <p className='max-w-sm mx-auto text-center text-sm  text-[#6C696D] mt-1'>Your ideas missed you.</p>
             <div className="border border-(--color-primary)! shadow-2xl! shadow-amber-600! rounded-2xl max-w-md mx-auto p-10 mt-6 space-y-4">
 
                 <Form
@@ -28,12 +28,6 @@ const LoginPage = () => {
                         isRequired
                         name="email"
                         type="email"
-                        validate={(value) => {
-                            if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
-                                return "Please enter a valid email address";
-                            }
-                            return null;
-                        }}
 
                     >
                         <Label>Email</Label>

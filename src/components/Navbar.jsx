@@ -1,5 +1,5 @@
 'use client'
-import { Avatar, Button, Switch, } from "@heroui/react";
+import { Avatar, Button, } from "@heroui/react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
@@ -9,8 +9,9 @@ import { usePathname } from "next/navigation";
 const Navbar = () => {
     const user = false;
     const pathName = usePathname();
-    const { theme, setTheme } = useTheme();
-    const isDark = theme === "dark";
+    const { resolvedTheme, setTheme } = useTheme();
+
+    const isDark = resolvedTheme === "dark";
 
     const publicLinks = [
         { to: "/", label: "Home" },
@@ -56,18 +57,17 @@ const Navbar = () => {
                     </ul>
 
                     <div className="flex items-center gap-2 md:gap-4">
-                        <Button
-                            onPress={() => { setTheme(isDark ? "light" : "dark") }}
-                            isIconOnly
-                            variant=""
+                        <button
+                            onClick={() => { setTheme(isDark ? "light" : "dark") }}
+                            
                         >
                             {
                                 isDark ?
-                                    <Sun className="text-amber-500 h-4 w-4" />
+                                    <Sun className="text-amber-500 h-4 w-4 cursor-pointer" />
 
-                                    : <Moon className="text-indigo-500 h-4 w-4" />
+                                    : <Moon className="text-indigo-500 h-4 w-4 cursor-pointer" />
                             }
-                        </Button>
+                        </button>
                         {
                             user ? <>
 
