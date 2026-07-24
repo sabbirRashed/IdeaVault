@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
 
+
 const sora = Sora({
   variable: "--font-sora",
   subsets: ["latin"],
@@ -26,10 +27,12 @@ export default function RootLayout({ children }) {
       className={`${sora.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Navbar />
-        {children}
-        <Footer />
-        <Toaster />
+ 
+          <Navbar />
+          {children}
+          <Footer />
+          <Toaster />
+
 
       </body>
     </html>

@@ -1,5 +1,6 @@
 import { Avatar, Button, Chip } from '@heroui/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
@@ -19,7 +20,7 @@ const IdeaCard = ({ idea }) => {
             <div className=''>
                 <h3 className='text-lg md:text-xl font-semibold font-sora '>{ideaTitle}</h3>
                 <p className='text-sm text-(--color-text-muted) line-clamp-1 mt-1'>{shortDescription}</p>
-                
+
 
                 <div className='mt-2 space-x-2'>
                     {tags.slice(0, 3).map((item, ind) => <Chip key={ind} className='bg-(--color-primary)/10 text-(--color-primary)'>{item}</Chip>)}
@@ -36,9 +37,11 @@ const IdeaCard = ({ idea }) => {
                         <span className='text-sm font-medium'>Sabbir Rahman</span>
                     </div>
 
-                    <Button size='sm' className={'text-xs btn-primary duration-300 transition-colors'}>
-                        View Details <FaArrowRightLong  />
-                    </Button>
+                    <Link href={`/ideaDetails/${_id}`}>
+                        <Button size='sm' className={'text-xs btn-primary duration-300 transition-colors'}>
+                            View Details <FaArrowRightLong />
+                        </Button>
+                    </Link>
                 </div>
             </div>
         </div>

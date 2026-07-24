@@ -15,9 +15,9 @@ const Navbar = () => {
     const user = data?.user;
 
     const pathName = usePathname();
-    // const { resolvedTheme, setTheme } = useTheme();
+    const { resolvedTheme, setTheme } = useTheme();
 
-    // const isDark = resolvedTheme === "dark";
+    const isDark = resolvedTheme === "dark";
 
     const handleLogout = async()=>{
         await authClient.signOut()
@@ -67,7 +67,7 @@ const Navbar = () => {
                     </ul>
 
                     <div className="flex items-center gap-2 md:gap-4">
-                        {/* <button
+                        <button
                             onClick={() => { setTheme(isDark ? "light" : "dark") }}
                             
                         >
@@ -77,7 +77,7 @@ const Navbar = () => {
 
                                     : <FiMoon className="text-indigo-500 h-5 w-5 cursor-pointer" />
                             }
-                        </button> */}
+                        </button>
                         {
                             user ? <>
 
