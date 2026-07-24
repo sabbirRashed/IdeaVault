@@ -1,4 +1,5 @@
 'use client'
+import { authClient } from "@/lib/auth-client";
 import { Avatar, Button, } from "@heroui/react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
@@ -9,7 +10,10 @@ import { SiUnacademy } from "react-icons/si";
 
 
 const Navbar = () => {
-    const user = false;
+
+    const {data, isPending} =  authClient.useSession();
+    const user = data?.user;
+
     const pathName = usePathname();
     // const { resolvedTheme, setTheme } = useTheme();
 
@@ -74,8 +78,10 @@ const Navbar = () => {
                             user ? <>
 
                                 <Avatar size="sm">
-                                    <Avatar.Image alt="John Doe" />
-                                    <Avatar.Fallback>JD</Avatar.Fallback>
+                                    <Avatar.Image 
+                                    src={user?.image} 
+                                    alt={user?.name} />
+                                    <Avatar.Fallback>{user?.name[0]}</Avatar.Fallback>
                                 </Avatar>
                                 <Button
                                     size="sm"
