@@ -35,10 +35,10 @@ const Navbar = () => {
     ];
 
     return (
-        <div className=" border-b bg-background/80 backdrop-blur-md">
+        <div className=" border-b bg-background/80 backdrop-blur-md sticky top-0 z-10">
 
             {/* Basic */}
-            <nav className="w-11/12 max-w-7xl mx-auto">
+            <nav className="w-11/12 max-w-7xl mx-auto ">
                 <header className="flex h-16 items-center justify-between px-6">
                     <div className="flex items-center gap-3">
                         <p className="font-bold">SparkNest</p>
