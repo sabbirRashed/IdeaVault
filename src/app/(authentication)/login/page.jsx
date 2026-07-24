@@ -20,14 +20,11 @@ const LoginPage = () => {
 
         const formData = new FormData(e.currentTarget);
         const loginData = Object.fromEntries(formData.entries());
-        console.log(loginData);
 
         const { data, error } = await authClient.signIn.email({
             email: loginData.email,
             password: loginData.password
         })
-
-        console.log('data:', data, error);
 
         if (data) {
             toast.success('Successfully login your account');
@@ -36,6 +33,18 @@ const LoginPage = () => {
         else {
             toast.error(error.message)
         }
+    }
+
+    const handleGoogleSignIn = async () => {
+        const { data, error } = await authClient.signIn.social({
+            provider: "google",
+        });
+
+        if (data) {
+            toast.success('Successfully login your account');
+            router.push('/')
+        }
+
     }
 
 
@@ -65,7 +74,7 @@ const LoginPage = () => {
                     <TextField
                         isRequired
                         name="password"
-                        type={isClosed? "password": "text"}
+                        type={isClosed ? "password" : "text"}
                         className={'relative'}
 
                     >
@@ -75,13 +84,13 @@ const LoginPage = () => {
                             placeholder="Enter your password" />
 
                         <FieldError />
-                        <Button 
-                        size="sm" 
-                        isIconOnly 
-                        variant="light" 
-                        onClick={()=>{setIsClosed(!isClosed)}}
-                        className={'absolute top-6.5 right-1'}>
-                            {isClosed? <FaRegEyeSlash />:<FaRegEye /> }
+                        <Button
+                            size="sm"
+                            isIconOnly
+                            variant="light"
+                            onClick={() => { setIsClosed(!isClosed) }}
+                            className={'absolute top-6.5 right-1'}>
+                            {isClosed ? <FaRegEyeSlash /> : <FaRegEye />}
                         </Button>
                     </TextField>
 
@@ -108,7 +117,7 @@ const LoginPage = () => {
                     <Separator className="flex-1" />
                 </div>
 
-                <Button variant="outline" className="w-full rounded-full border border-(--color-primary)">
+                <Button onClick={handleGoogleSignIn} variant="outline" className="w-full rounded-full border border-(--color-primary)">
                     <FcGoogle />
                     Sign Up With Google
                 </Button>
