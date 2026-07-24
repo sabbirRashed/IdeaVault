@@ -4,13 +4,16 @@ import { authClient } from "@/lib/auth-client";
 import { Button, Card, Checkbox, FieldError, Form, Input, Label, Separator, TextField } from "@heroui/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import toast from "react-hot-toast";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 
 
 const LoginPage = () => {
 
     const router = useRouter()
+    const [isClosed, setIsClosed] = useState(true)
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -62,7 +65,8 @@ const LoginPage = () => {
                     <TextField
                         isRequired
                         name="password"
-                        type="password"
+                        type={isClosed? "password": "text"}
+                        className={'relative'}
 
                     >
                         <Label>Password</Label>
@@ -71,6 +75,14 @@ const LoginPage = () => {
                             placeholder="Enter your password" />
 
                         <FieldError />
+                        <Button 
+                        size="sm" 
+                        isIconOnly 
+                        variant="light" 
+                        onClick={()=>{setIsClosed(!isClosed)}}
+                        className={'absolute top-6.5 right-1'}>
+                            {isClosed? <FaRegEyeSlash />:<FaRegEye /> }
+                        </Button>
                     </TextField>
 
                     <div className="space-x-1 flex justify-between items-center text-(--color-text-muted)">
@@ -103,7 +115,7 @@ const LoginPage = () => {
 
                 <div className="text-center space-x-2">
                     <span className='text-sm text-(--color-text-muted)'>Don't have an account?</span>
-                    <Link href={'/signUp'} className={'text-(--color-primary) font-medium'}>Sign Up</Link>
+                    <Link href={'/register'} className={'text-(--color-primary) font-medium'}>Sign Up</Link>
                 </div>
             </div>
         </div>

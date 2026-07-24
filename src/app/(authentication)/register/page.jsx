@@ -3,28 +3,31 @@ import { authClient } from '@/lib/auth-client';
 import { Button, FieldError, Form, Input, Label, Separator, TextField } from '@heroui/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 
 
 const RegisterPage = () => {
     const router = useRouter();
-    const handleForm = async(e) => {
+    const [isClosed, setIsClosed] = useState(true)
+
+    const handleForm = async (e) => {
         e.preventDefault();
 
         const form = e.currentTarget;
         const formData = new FormData(form);
         const registerData = Object.fromEntries(formData.entries());
         const { name, email, password, imageUrl } = registerData;
-      
+
         const { data, error } = await authClient.signUp.email({
             name,
             email,
             password,
             image: imageUrl,
         })
-        
+
         if (data) {
             toast.success('Register successfull')
             router.push('/')
@@ -84,6 +87,7 @@ const RegisterPage = () => {
                     </TextField>
 
                     <TextField
+                    className={'relative'}
                         isRequired
                         minLength={6}
                         name="password"
@@ -105,6 +109,14 @@ const RegisterPage = () => {
                         <Input
                             className={"rounded-full  border border-(--color-primary) shadow-none"}
                             placeholder="Enter your password" />
+                        <Button
+                            size="sm"
+                            isIconOnly
+                            variant="light"
+                            onClick={() => { setIsClosed(!isClosed) }}
+                            className={'absolute top-6.5 right-1'}>
+                            {isClosed ? <FaRegEyeSlash /> : <FaRegEye />}
+                        </Button>
 
                         <FieldError />
                     </TextField>
@@ -129,7 +141,7 @@ const RegisterPage = () => {
                 </Button>
 
                 <div className="text-center space-x-2">
-                    <span className='text-sm text-[#6C696D]'>Already have an account? </span>
+                    <span className='text-sm text-(--color-text-muted)'>Already have an account? </span>
                     <Link href={'/login'} className={'text-(--color-primary) font-medium'}>Log in</Link>
                 </div>
             </div>
