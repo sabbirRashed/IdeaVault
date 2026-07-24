@@ -13,7 +13,6 @@ const Navbar = () => {
 
     const {data, isPending} =  authClient.useSession();
     const user = data?.user;
-    console.log(data, isPending);
 
     const pathName = usePathname();
     // const { resolvedTheme, setTheme } = useTheme();

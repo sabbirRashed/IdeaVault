@@ -32,7 +32,7 @@
 
     --shadow-card: 0 1px 3px rgba(28, 25, 23, 0.08), 0 1px 2px rgba(28, 25, 23, 0.04);
 
-     /* footer */
+    /* footer */
     --color-footer-bg: #171412;
 }
 
@@ -64,13 +64,18 @@
 
     --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
 
-   
+
 }
 
 body {
     background-color: var(--color-bg);
     color: var(--color-text);
     transition: background-color 0.2s ease, color 0.2s ease;
+    font-family: var(--font-inter);
+}
+
+.font-sora {
+    font-family: var(--font-sora);
 }
 
 .card {
