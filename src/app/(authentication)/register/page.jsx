@@ -29,11 +29,7 @@ const RegisterPage = () => {
         })
 
         if (data) {
-            toast.success('Register successfull')
             router.push('/')
-        }
-        else if (error) {
-            toast.error(`${error.message}`)
         }
     };
 

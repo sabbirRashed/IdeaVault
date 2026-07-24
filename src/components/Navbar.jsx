@@ -27,10 +27,10 @@ const Navbar = () => {
     const publicLinks = [
         { to: "/", label: "Home" },
         { to: "/ideas", label: "Ideas" },
+        { to: "/add-ideas", label: "Add Idea" }
     ];
 
     const privateLinks = [
-        { to: "/add-ideas", label: "Add Idea" },
         { to: "/my-ideas", label: "My Ideas" },
         { to: "/my-interactions", label: "My Interactions" },
     ];
