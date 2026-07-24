@@ -20,6 +20,10 @@ const Navbar = () => {
 
     // const isDark = resolvedTheme === "dark";
 
+    const handleLogout = async()=>{
+        await authClient.signOut()
+    }
+
     const publicLinks = [
         { to: "/", label: "Home" },
         { to: "/ideas", label: "Ideas" },
@@ -87,7 +91,7 @@ const Navbar = () => {
                                 <Button
                                     size="sm"
                                     className={'bg-(--color-danger)'}
-                                // onPress={onLogout}
+                                onPress={handleLogout}
                                 >
                                     Log out
                                 </Button>
