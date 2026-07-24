@@ -6,7 +6,7 @@
     /* Primary — Spark (Orange) */
     --color-primary: #F97316;
     --color-primary-hover: #EA580C;
-    --color-primary-light: #FFEDD5;
+    
 
     /* Secondary — Nest (Teal) */
     --color-secondary: #0D9488;
@@ -78,11 +78,10 @@ body {
     font-family: var(--font-sora);
 }
 
-.card {
+.idea-card {
     background-color: var(--color-card);
     border: 1px solid var(--color-border);
     box-shadow: var(--shadow-card);
-    border-radius: 0.875rem;
 }
 
 .btn-primary {
