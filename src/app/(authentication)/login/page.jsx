@@ -1,18 +1,38 @@
 "use client"
 
+import { authClient } from "@/lib/auth-client";
 import { Button, Card, FieldError, Form, Input, Label, Separator, TextField } from "@heroui/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 
 
 const LoginPage = () => {
 
-    const handleLogin = (e) => {
+     const router = useRouter()
+
+    const handleLogin = async (e) => {
         e.preventDefault();
 
         const formData = new FormData(e.currentTarget);
         const loginData = Object.fromEntries(formData.entries());
         console.log(loginData);
+
+        const { data, error } = await authClient.signIn.email({
+            email: loginData.email,
+            password: loginData.password
+        })
+
+        console.log('data:' , data, error);
+
+        if(data){
+            toast.success('Successfully login your account');
+            router.push('/')
+        }
+        else{
+            toast.error(error.message)
+        }
     }
 
 
@@ -43,7 +63,7 @@ const LoginPage = () => {
                         isRequired
                         name="password"
                         type="password"
-                       
+
                     >
                         <Label>Password</Label>
                         <Input

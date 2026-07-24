@@ -13,7 +13,8 @@ const RegisterPage = () => {
     const handleForm = async(e) => {
         e.preventDefault();
 
-        const formData = new FormData(e.currentTarget);
+        const form = e.currentTarget;
+        const formData = new FormData(form);
         const registerData = Object.fromEntries(formData.entries());
         const { name, email, password, imageUrl } = registerData;
       
@@ -23,7 +24,7 @@ const RegisterPage = () => {
             password,
             image: imageUrl,
         })
-        console.log(data, error);
+        
         if (data) {
             toast.success('Register successfull')
             router.push('/')
