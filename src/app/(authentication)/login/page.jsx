@@ -1,7 +1,7 @@
 "use client"
 
 import { authClient } from "@/lib/auth-client";
-import { Button, Card, FieldError, Form, Input, Label, Separator, TextField } from "@heroui/react";
+import { Button, Card, Checkbox, FieldError, Form, Input, Label, Separator, TextField } from "@heroui/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
@@ -10,7 +10,7 @@ import { FcGoogle } from "react-icons/fc";
 
 const LoginPage = () => {
 
-     const router = useRouter()
+    const router = useRouter()
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -24,13 +24,13 @@ const LoginPage = () => {
             password: loginData.password
         })
 
-        console.log('data:' , data, error);
+        console.log('data:', data, error);
 
-        if(data){
+        if (data) {
             toast.success('Successfully login your account');
             router.push('/')
         }
-        else{
+        else {
             toast.error(error.message)
         }
     }
@@ -73,6 +73,15 @@ const LoginPage = () => {
                         <FieldError />
                     </TextField>
 
+                    <div className="space-x-1 flex justify-between items-center text-(--color-text-muted)">
+                        <div className="space-x-1">
+                            <input type="checkbox" />
+                            <label className="text-sm font-medium">Remember Me</label>
+                        </div>
+
+                        <Link href={'#'} className="text-sm font-medium">Forgot Password</Link>
+                    </div>
+
                     <Button
                         type="submit"
                         className={'w-full rounded-full bg-(--color-primary)'}>
@@ -93,7 +102,7 @@ const LoginPage = () => {
                 </Button>
 
                 <div className="text-center space-x-2">
-                    <span className='text-sm text-[#6C696D]'>Don't have an account?</span>
+                    <span className='text-sm text-(--color-text-muted)'>Don't have an account?</span>
                     <Link href={'/signUp'} className={'text-(--color-primary) font-medium'}>Sign Up</Link>
                 </div>
             </div>
