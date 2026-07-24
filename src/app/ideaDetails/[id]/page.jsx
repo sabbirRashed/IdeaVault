@@ -1,7 +1,13 @@
 import { getIdeaById } from '@/lib/data';
-import { Chip } from '@heroui/react';
+import { Avatar, Chip } from '@heroui/react';
 import Image from 'next/image';
 import React from 'react';
+import { BiUserPlus } from 'react-icons/bi';
+import { FaMoneyBillWave, FaRegCommentDots, FaUserPlus } from 'react-icons/fa';
+import { FaSackDollar } from 'react-icons/fa6';
+import { MdOutlineTimer } from 'react-icons/md';
+import { RiMoneyDollarBoxLine } from 'react-icons/ri';
+import { TbTargetArrow, TbUserPlus } from 'react-icons/tb';
 
 const IdeaDetails = async ({ params }) => {
     const { id } = await params;
@@ -44,8 +50,41 @@ const IdeaDetails = async ({ params }) => {
                 </div>
             </div>
 
-            <div className='border mt-6'>
-                <h3></h3>
+            <div className='border border-(--color-border) mt-6 space-y-4 p-4 bg-'>
+                <div className='space-y-1'>
+                    <h3 className='flex gap-2 items-center font-semibold'> <TbUserPlus size={18} /> Innovator:</h3>
+                    <div className='flex items-center gap-1 ml-6'>
+                        <Avatar size="sm" className='w-6 h-6'>
+                            <Avatar.Image
+                                // src={}
+                                alt={''} />
+                            <Avatar.Fallback className='text-xs'>M</Avatar.Fallback>
+                        </Avatar>
+                        <span className='text-sm font-medium'> Sabbir Rahman</span>
+                    </div>
+                </div>
+
+                <div className='space-y-1'>
+                    <div className='flex items-center gap-2 font-semibold'>
+                        <RiMoneyDollarBoxLine size={16} /> estimatedBudget
+                    </div>
+                    <p className='text-sm ml-6'>{estimatedBudget}</p>
+                </div>
+
+                <div className='space-y-1'>
+                    <h3 className='flex items-center gap-2 font-semibold'><TbTargetArrow size={16} /> targetAudience</h3>
+                    <p className='text-sm ml-6'>{targetAudience}</p>
+                </div>
+
+                <div className='space-y-1'>
+                    <h3 className='flex items-center gap-2 font-semibold'><MdOutlineTimer size={16} /> Posted date</h3>
+                    <p className='text-sm ml-6'>20 Jully, 2026; 10.15 AM</p>
+                </div>
+
+                <div className='space-y-1'>
+                    <h3 className='flex items-center gap-2 font-semibold'><FaRegCommentDots size={16} /> Comment count</h3>
+                    <p className='text-sm ml-6'>15</p>
+                </div>
 
             </div>
         </div>
