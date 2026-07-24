@@ -2,9 +2,9 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@heroui/react";
-import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 const slides = [
     {
@@ -13,7 +13,7 @@ const slides = [
         subtitle:
             "Post your startup idea in minutes and get real feedback from a community that builds, not just talks.",
         cta: "Share Your Idea",
-         path: "/add-ideas",
+        path: "/add-ideas",
         image:
             "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop",
     },
@@ -23,7 +23,7 @@ const slides = [
         subtitle:
             "Explore hundreds of startup ideas across tech, health, education, and more — before they become headlines.",
         cta: "Explore Ideas",
-         path: "/ideas",
+        path: "/ideas",
         image:
             "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=800&auto=format&fit=crop",
     },
@@ -33,7 +33,7 @@ const slides = [
         subtitle:
             "Get comments, questions, and honest reactions from people who actually care about building things.",
         cta: "Share Your Feedback",
-        path: "/ideas", 
+        path: "/ideas",
         image:
             "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop",
     },
@@ -82,10 +82,10 @@ export default function Hero() {
                                 <p className="mt-3 text-white/80">{slide.subtitle}</p>
                                 <Link href={slide.path}>
                                     <Button
-                                        className={'mt-5 font-semibold btn-primary transition-colors duration-300'}
+                                        className={'mt-5 font-semibold btn-primary transition-colors duration-300 flex items-center gap-4'}
                                     >
                                         {slide.cta}
-                                        <ArrowRight size={18} />
+                                        <FaArrowRightLong size={16} />
                                     </Button>
                                 </Link>
                             </div>

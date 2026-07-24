@@ -1,18 +1,38 @@
 "use client"
-import { Button, Checkbox, FieldError, Form, Input, Label, Separator, TextField } from '@heroui/react';
+import { authClient } from '@/lib/auth-client';
+import { Button, FieldError, Form, Input, Label, Separator, TextField } from '@heroui/react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React from 'react';
+import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
 
-const RegisterPage = () => {
 
-    const handleForm = (e) => {
+const RegisterPage = () => {
+    const router = useRouter();
+    const handleForm = async(e) => {
         e.preventDefault();
 
         const formData = new FormData(e.currentTarget);
         const registerData = Object.fromEntries(formData.entries());
-        console.log(registerData);
-    }
+        const { name, email, password, imageUrl } = registerData;
+      
+        const { data, error } = await authClient.signUp.email({
+            name,
+            email,
+            password,
+            image: imageUrl,
+        })
+        console.log(data, error);
+        if (data) {
+            toast.success('Register successfull')
+            router.push('/')
+        }
+        else if (error) {
+            toast.error(`${error.message}`)
+        }
+    };
+
     return (
         <div className='min-h-screen w-11/12 max-w-7xl mx-auto py-30'>
             <h2 className='text-center text-2xl md:text-3xl font-semibold tracking-wide'>Let's build your nest</h2>
@@ -113,7 +133,8 @@ const RegisterPage = () => {
                 </div>
             </div>
         </div>
-    );
+    )
 };
+
 
 export default RegisterPage;
