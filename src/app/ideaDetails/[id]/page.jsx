@@ -30,7 +30,7 @@ const IdeaDetails = async ({ params }) => {
         proposedSolution,
     } = idea;
 
-    
+
     return (
         <div className='w-11/12 max-w-7xl mx-auto py-20 md:py-30'>
             <div className='relative overflow-hidden'>
@@ -94,28 +94,28 @@ const IdeaDetails = async ({ params }) => {
 
             </div>
 
-            <div className='grid grid-cols-1 md:grid-cols-3 items-start gap-6 mt-20 md:mt-30'>
+            <div className='grid grid-cols-1 md:grid-cols-3 items-start gap-20 mt-20 md:mt-30'>
                 {/* left */}
-                <div className=' minh-20 col-span-2 space-y-10'>
+                <div className=' minh-20 md:col-span-2 space-y-10'>
                     <div className='space-y-4  px-4'>
-                        <h2 className='text-xl md:text-2xl font-medium text-foreground/70'>{shortDescription}</h2>
-                        <p className='text-foreground/70  max-w-2xl'>{detailedDescription}</p>
+                        <h2 className='text-xl md:text-2xl font-medium font-sora text-foreground/70'>{shortDescription}</h2>
+                        <p className='text-foreground/70  '>{detailedDescription}</p>
                     </div>
 
                     <div className='space-y-4 border-l-2 border-l-(--color-warning) p-4'>
-                        <h2 className='text-xl md:text-2xl font-medium text-foreground/70 flex items-center gap-2'><IoWarningOutline className='text-(--color-warning)' /> The Problem</h2>
-                        <p className='text-foreground/70 max-w-xl'>{problemStatement}</p>
+                        <h2 className='text-xl md:text-2xl font-medium font-sora text-foreground/70 flex items-center gap-2'><IoWarningOutline className='text-(--color-warning)' /> The Problem</h2>
+                        <p className='text-foreground/70 '>{problemStatement}</p>
                     </div>
 
                     <div className='space-y-4 border-l-2 border-l-(--color-success) p-4'>
-                        <h2 className='text-xl md:text-2xl font-medium text-foreground/70 flex items-center gap-2'><FcIdea /> The Solution</h2>
-                        <p className='text-foreground/70 max-w-xl'>{proposedSolution}</p>
+                        <h2 className='text-xl md:text-2xl font-medium font-sora text-foreground/70 flex items-center gap-2'><FcIdea /> The Solution</h2>
+                        <p className='text-foreground/70 '>{proposedSolution}</p>
                     </div>
 
                 </div>
 
                 {/* right */}
-                <div className='min-h-20 border p-4 space-y-4 sticky top-24'>
+                <div className=' border w-full p-4 space-y-4 sticky top-24'>
                     <div>
                         <h3 className='flex items-center gap-2 font-semibold'><BiCategory />Category</h3>
                         <Chip className='bg-(--color-secondary)/90 text-white ml-6'>{category}</Chip>

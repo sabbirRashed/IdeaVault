@@ -37,7 +37,7 @@ const CommentSection = () => {
                             rows={1}
                             value={comment}
                             onChange={(e) => { setComment(e.target.value) }}
-                            placeholder="Write your comment"
+                            placeholder="Add your comment"
                             className={'shadow-none w-full py-1 px-4 bg-white rounded-xl focus:outline-(--color-primary)/80'} />
 
                         <div className='flex justify-end gap-3 mt-2'>

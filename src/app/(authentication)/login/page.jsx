@@ -51,7 +51,7 @@ const LoginPage = () => {
         <div className='min-h-screen w-11/12 max-w-7xl mx-auto py-30'>
             <h2 className='text-center text-2xl md:text-3xl font-semibold tracking-wide'>Welcome Back</h2>
             <p className='max-w-sm mx-auto text-center text-sm  text-[#6C696D] mt-1'>Your ideas missed you.</p>
-            <div className="border border-(--color-primary)! shadow-2xl! shadow-amber-600! rounded-2xl max-w-md mx-auto p-10 mt-6 space-y-4">
+            <div className="border border-(--color-primary) shadow-2xl shadow-amber-600 rounded-2xl max-w-md mx-auto p-10 mt-6 space-y-4">
 
                 <Form
                     onSubmit={handleLogin}
