@@ -1,10 +1,30 @@
+"use client"
 import { FieldError, Form, Input, Label, ListBox, TextField, Select, Checkbox, CheckboxGroup, TextArea, Button } from '@heroui/react';
-import React from 'react';
+import { col } from 'framer-motion/client';
+import React, { useState } from 'react';
 
 const AddIdeaCard = () => {
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.currentTarget);
+        const newIdeaData = Object.fromEntries(formData.entries());
+        console.log('newIdea:', newIdeaData);
+
+        const { ideaTitle, category, imageUrl, estimatedBudget, targetAudience
+            , problemStatement, proposedSolution, shortDescription, detailedDescription
+
+        } = newIdeaData
+
+    }
+
+
     return (
         <div className="border border-(--color-primary) shadow-2xl shadow-amber-600 rounded-2xl max-w-5xl mx-auto p-10 mt-6 space-y-4">
-            <Form className='space-y-4 md:space-y-6'>
+            <Form
+                onSubmit={handleSubmit}
+                className='space-y-4 md:space-y-6'>
                 {/* tiele */}
                 <TextField
                     isRequired
@@ -75,8 +95,8 @@ const AddIdeaCard = () => {
                     </Select>
 
                     {/* budget */}
-                    <TextField name="price" type="number" className={'flex-1'} isRequired>
-                        <Label>Price (USD)</Label>
+                    <TextField name="estimatedBudget" type="number" className={'flex-1'} isRequired>
+                        <Label>Budget (USD)</Label>
                         <Input
                             type="number"
                             placeholder="e.g.  $1299"
@@ -100,7 +120,10 @@ const AddIdeaCard = () => {
                     <FieldError />
                 </TextField>
 
-                <CheckboxGroup name="Tags">
+                {/* <CheckboxGroup name="Tags"
+                    value={tags}
+                    onValueChange={setTags}
+                >
                     <Label>Tags</Label>
                     <div className='flex items-center gap-6 md:gap-10 flex-wrap'>
                         <Checkbox value="ai">
@@ -136,7 +159,8 @@ const AddIdeaCard = () => {
                             </Checkbox.Content>
                         </Checkbox>
                     </div>
-                </CheckboxGroup>
+                    
+                </CheckboxGroup> */}
 
 
                 <TextField name="shortDescription" isRequired>
@@ -169,7 +193,7 @@ const AddIdeaCard = () => {
                     <FieldError />
                 </TextField>
 
-                <TextField name="problemStatement" isRequired>
+                <TextField name="proposedSolution" isRequired>
                     <Label>Solution</Label>
                     <TextArea
                         rows={1}
