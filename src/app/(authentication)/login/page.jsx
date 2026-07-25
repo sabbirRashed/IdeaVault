@@ -41,7 +41,6 @@ const LoginPage = () => {
         });
 
         if (data) {
-            toast.success('Successfully login your account');
             router.push('/')
         }
 

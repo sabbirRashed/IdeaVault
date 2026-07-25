@@ -1,3 +1,4 @@
+import CommentSection from '@/components/CommentSection';
 import { getIdeaById } from '@/lib/data';
 import { Avatar, Chip } from '@heroui/react';
 import Image from 'next/image';
@@ -28,6 +29,8 @@ const IdeaDetails = async ({ params }) => {
         problemStatement,
         proposedSolution,
     } = idea;
+
+    
     return (
         <div className='w-11/12 max-w-7xl mx-auto py-20 md:py-30'>
             <div className='relative overflow-hidden'>
@@ -96,7 +99,7 @@ const IdeaDetails = async ({ params }) => {
                 <div className=' minh-20 col-span-2 space-y-10'>
                     <div className='space-y-4  px-4'>
                         <h2 className='text-xl md:text-2xl font-medium text-foreground/70'>{shortDescription}</h2>
-                        <p className='text-foreground/70  max-w-2xl'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum nam quo nesciunt neque qui ratione, soluta voluptatem iure velit aspernatur error esse fugit repudiandae eum quos deserunt obcaecati. Vitae inventore eaque suscipit laborum aliquid iste ducimus temporibus aspernatur alias, magni ullam, et quos rerum ipsum veritatis dolor consequatur dolorem enim voluptatum perspiciatis laboriosam quis molestiae sint sapiente! Autem harum debitis delectus veritatis optio cum cumque sint accusamus iure veniam possimus dolorum consequuntur officia, eaque quod eveniet culpa quibusdam earum, ullam reprehenderit mollitia obcaecati odit ad. Quisquam dolore nihil animi eos libero, corporis tenetur enim illum sed fuga magnam sunt aliquid voluptatem odio autem accusantium deserunt consequatur inventore a. Sint doloribus commodi veritatis, repellat ex suscipit molestiae nesciunt modi optio, totam, veniam sequi illo? Similique soluta impedit doloribus repudiandae cum, pariatur amet necessitatibus nulla eveniet assumenda quas ad consequuntur. Voluptates sit fugit, ea praesentium excepturi error rem minima dolores debitis sint impedit corporis perspiciatis tempora, blanditiis mollitia quas eos eius sapiente aperiam omnis voluptate aliquam doloremque ex. Corporis molestiae explicabo maxime culpa vel excepturi minima distinctio perferendis voluptas? Ipsam totam iure veniam explicabo adipisci quo voluptatum! Asperiores excepturi voluptatem vitae magni exercitationem tempore optio, et sapiente aperiam dolorem ipsa? Odio molestias eaque in iusto officia. Eius nesciunt id perspiciatis amet unde a asperiores quia blanditiis vel deleniti, natus vitae, hic iure autem obcaecati. Inventore aliquam sit repellat necessitatibus in quas assumenda hic quia? Dignissimos ducimus alias voluptatibus, velit, eum est iste ullam nulla minus incidunt aperiam modi, quos dolorem inventore. Dolor perspiciatis aliquam culpa rem alias, praesentium minima saepe molestias vitae blanditiis labore sit, iusto recusandae. Voluptatem repellendus, quae sunt expedita nostrum accusamus recusandae perferendis corrupti quos quisquam repellat iure ut dolores, animi laudantium. Quae cupiditate modi sit quo exercitationem ipsa unde iure harum, ipsum corrupti dignissimos voluptas illo temporibus ab mollitia veritatis libero asperiores voluptatum nihil itaque! Dignissimos excepturi exercitationem, doloremque at quae cum sapiente quis consequuntur sint quam porro velit ullam maiores iure ea iusto nulla odio mollitia in distinctio itaque. Totam ea perferendis dignissimos libero voluptatibus veniam natus doloremque explicabo molestias non possimus eum quisquam voluptate aut, quod quae recusandae quis fugiat, rerum blanditiis reprehenderit! Excepturi ipsa aperiam reprehenderit perferendis vero quisquam, cupiditate, obcaecati iste nihil minima eos quibusdam. Libero magnam aperiam cum quidem vel, doloremque ex maxime similique officia consequuntur iure numquam tenetur sint amet tempora assumenda atque voluptate recusandae porro deleniti! Molestiae, nulla? Nam natus, dicta neque dolorum doloremque repellendus ipsa veniam. Consequuntur labore, expedita eius sapiente consequatur alias recusandae qui! Tempora error quisquam ex! Obcaecati, sed veritatis velit reprehenderit accusantium, officiis nemo dignissimos modi nostrum reiciendis ipsa libero hic dolor. Est quam amet sunt corrupti illo tempore aut dolorem praesentium aliquid quasi ut laboriosam beatae, pariatur cum. Itaque, quisquam! Accusantium quisquam enim minus. Architecto officiis expedita dignissimos obcaecati illum. Doloribus blanditiis reprehenderit alias voluptatum temporibus omnis laboriosam cupiditate quae asperiores, eaque, voluptatem ex quis pariatur architecto natus commodi quasi et? Qui, quasi amet deserunt obcaecati rem voluptatem recusandae debitis quod modi est molestiae quis libero.</p>
+                        <p className='text-foreground/70  max-w-2xl'>{detailedDescription}</p>
                     </div>
 
                     <div className='space-y-4 border-l-2 border-l-(--color-warning) p-4'>
@@ -162,6 +165,9 @@ const IdeaDetails = async ({ params }) => {
                     </div>
                 </div>
             </div>
+
+            {/* comment */}
+            <CommentSection/>
         </div>
     );
 };

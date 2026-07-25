@@ -26,11 +26,12 @@ const RegisterPage = () => {
             email,
             password,
             image: imageUrl,
+            callbackURL: '/'
         })
 
-        if (data) {
-            router.push('/')
-        }
+        // if (data) {
+        //     router.push('/')
+        // }
     };
 
     return (
