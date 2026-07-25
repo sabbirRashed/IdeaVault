@@ -1,25 +1,46 @@
 "use client"
 import { postIdea } from '@/lib/action';
+import { authClient } from '@/lib/auth-client';
 import { FieldError, Form, Input, Label, ListBox, TextField, Select, Checkbox, CheckboxGroup, TextArea, Button } from '@heroui/react';
 import { col } from 'framer-motion/client';
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const AddIdeaCard = () => {
+
+    const { data, isPending } = authClient.useSession();
+    const user = data?.user;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const formData = new FormData(e.currentTarget);
         const newIdeaData = Object.fromEntries(formData.entries());
-        
+
         const { ideaTitle, category, imageUrl, estimatedBudget, targetAudience
             , problemStatement, proposedSolution, shortDescription, detailedDescription
 
         } = newIdeaData
-        
-        const result = await postIdea({
 
+        const result = await postIdea({
+            userId: user?.id,
+            userName: user?.name,
+            userImage: user?.image,
+            ideaTitle,
+            category,
+            imageUrl,
+            estimatedBudget,
+            targetAudience,
+            problemStatement,
+            proposedSolution,
+            shortDescription,
+            detailedDescription
         })
+        if(result.acknowledged){
+            toast.success('Successfully added a new post')
+        }else{
+            toast.error('Something went wrong')
+        }
 
     }
 

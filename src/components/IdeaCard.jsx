@@ -5,7 +5,7 @@ import React from 'react';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
 const IdeaCard = ({ idea }) => {
-    const { _id, ideaTitle, shortDescription, detailedDescription, category, tags, imageURL, } = idea
+    const { _id, ideaTitle, shortDescription, category, tags, imageURL, } = idea
     return (
         <div className=' space-y-6 border idea-card p-4 rounded-2xl'>
             <div className='relative'>
@@ -23,7 +23,9 @@ const IdeaCard = ({ idea }) => {
 
 
                 <div className='mt-2 space-x-2'>
-                    {tags.slice(0, 3).map((item, ind) => <Chip key={ind} className='bg-(--color-primary)/10 text-(--color-primary)'>{item}</Chip>)}
+                    {
+                        tags && tags.slice(0, 3).map((item, ind) => <Chip key={ind} className='bg-(--color-primary)/10 text-(--color-primary)'>{item}</Chip>)
+                    }
                 </div>
 
                 <div className='flex justify-between items-center mt-2'>
