@@ -14,21 +14,22 @@ const AddIdeaCard = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const formData = new FormData(e.currentTarget);
+        const form = e.currentTarget;
+        const formData = new FormData(form);
         const newIdeaData = Object.fromEntries(formData.entries());
 
-        const { ideaTitle, category, imageUrl, estimatedBudget, targetAudience
+        const { ideaTitle, category, imageURL, estimatedBudget, targetAudience
             , problemStatement, proposedSolution, shortDescription, detailedDescription
 
         } = newIdeaData
 
         const result = await postIdea({
-            userId: user?.id,
-            userName: user?.name,
-            userImage: user?.image,
+            creatorId: user?.id,
+            creatorName: user?.name,
+            creatorImage: user?.image,
             ideaTitle,
             category,
-            imageUrl,
+            imageURL,
             estimatedBudget,
             targetAudience,
             problemStatement,
@@ -37,7 +38,8 @@ const AddIdeaCard = () => {
             detailedDescription
         })
         if(result.acknowledged){
-            toast.success('Successfully added a new post')
+            toast.success('Successfully added a new post');
+            form.reset()
         }else{
             toast.error('Something went wrong')
         }
@@ -68,7 +70,7 @@ const AddIdeaCard = () => {
                 {/* image url */}
                 <TextField
                     isRequired
-                    name="imageUrl"
+                    name="imageURL"
                     type="url"
 
                 >

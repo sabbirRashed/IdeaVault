@@ -28,7 +28,16 @@ const IdeaDetails = async ({ params }) => {
         targetAudience,
         problemStatement,
         proposedSolution,
+        creatorName,
+        creatorImage,
+        createdAt
     } = idea;
+
+    const createdDate = new Date(createdAt).toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    })
 
 
     return (
@@ -48,7 +57,7 @@ const IdeaDetails = async ({ params }) => {
                     <h1 className='text-2xl md:text-4xl font-semibold font-sora text-center'>{ideaTitle}</h1>
                 </div>
                 <div className='absolute top-12 left-1/2 -translate-x-1/2 space-x-2 md:space-x-10 flex items-center'>
-                    {tags.map((item, ind) => {
+                    {tags && tags.map((item, ind) => {
                         return (
                             <Chip key={ind} className='bg-(--color-primary)/40 text-(--color-primary)'>{item}</Chip>
                         )
@@ -62,11 +71,11 @@ const IdeaDetails = async ({ params }) => {
                     <div className='flex items-center gap-1 ml-6'>
                         <Avatar size="sm" className='w-6 h-6'>
                             <Avatar.Image
-                                // src={}
-                                alt={''} />
-                            <Avatar.Fallback className='text-xs'>M</Avatar.Fallback>
+                                src={creatorImage}
+                                alt={creatorName} />
+                            <Avatar.Fallback className='text-xs'>{creatorName && creatorName[0]}</Avatar.Fallback>
                         </Avatar>
-                        <span className='text-sm font-medium'> Sabbir Rahman</span>
+                        <span className='text-sm font-medium'> {creatorName}</span>
                     </div>
                 </div>
 
@@ -74,7 +83,7 @@ const IdeaDetails = async ({ params }) => {
                     <div className='flex items-center gap-2 font-semibold'>
                         <RiMoneyDollarBoxLine size={16} /> Estimated Budget
                     </div>
-                    <p className='text-sm ml-6'>{estimatedBudget}</p>
+                    <p className='text-sm ml-6'>${estimatedBudget}</p>
                 </div>
 
                 <div className='space-y-1'>
@@ -84,7 +93,7 @@ const IdeaDetails = async ({ params }) => {
 
                 <div className='space-y-1'>
                     <h3 className='flex items-center gap-2 font-semibold'><MdOutlineTimer size={16} /> Posted date</h3>
-                    <p className='text-sm ml-6'>20 Jully, 2026; 10.15 AM</p>
+                    <p className='text-sm ml-6'>{createdDate}</p>
                 </div>
 
                 <div className='space-y-1'>
@@ -98,8 +107,8 @@ const IdeaDetails = async ({ params }) => {
                 {/* left */}
                 <div className=' minh-20 md:col-span-2 space-y-10'>
                     <div className='space-y-4  px-4'>
-                        <h2 className='text-xl md:text-2xl font-medium font-sora text-foreground/70'>{shortDescription}</h2>
-                        <p className='text-foreground/70  '>{detailedDescription}</p>
+                        <h2 className='text-xl md:text-2xl font-medium font-sora text-foreground/70 max-w-2xl'>{shortDescription}</h2>
+                        <p className='text-foreground/70  text-justify'>{detailedDescription}</p>
                     </div>
 
                     <div className='space-y-4 border-l-2 border-l-(--color-warning) p-4'>
@@ -124,7 +133,7 @@ const IdeaDetails = async ({ params }) => {
                     <div>
                         <h2 className='flex items-center gap-2 font-semibold'><LiaTagsSolid />Tags</h2>
                         <div className='space-x-2 ml-6'>
-                            {tags.map((item, ind) => {
+                            {tags && tags.map((item, ind) => {
                                 return (
                                     <Chip key={ind} className='bg-(--color-primary)/10 text-(--color-primary)'>{item}</Chip>
                                 )
@@ -156,18 +165,18 @@ const IdeaDetails = async ({ params }) => {
                         <div className='flex items-center gap-1 ml-6'>
                             <Avatar size="sm" className='w-6 h-6'>
                                 <Avatar.Image
-                                    // src={}
-                                    alt={''} />
-                                <Avatar.Fallback className='text-xs'>M</Avatar.Fallback>
+                                    src={creatorImage}
+                                    alt={creatorName} />
+                                <Avatar.Fallback className='text-xs'>{creatorName[0]}</Avatar.Fallback>
                             </Avatar>
-                            <span className='text-sm font-medium'> Sabbir Rahman</span>
+                            <span className='text-sm font-medium'> {creatorName}</span>
                         </div>
                     </div>
                 </div>
             </div>
 
             {/* comment */}
-            <CommentSection/>
+            <CommentSection idea={idea}/>
         </div>
     );
 };

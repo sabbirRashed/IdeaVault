@@ -1,21 +1,17 @@
 'use client'
+import { authClient } from '@/lib/auth-client';
 import { Avatar, Button, Input } from '@heroui/react';
 import React, { useState } from 'react';
 import { LuDot } from 'react-icons/lu';
 
 const CommentSection = () => {
     const [comment, setComment] = useState('');
-    console.log('comment:', comment);
+    
+    const {data} = authClient.useSession();
+    const user = data?.user;
 
     const handleComment = (e) => {
         e.preventDefault();
-
-        if (comment) {
-            console.log("condition is true");
-        }
-        else {
-            console.log('condition false');
-        }
 
     }
     return (
@@ -27,9 +23,9 @@ const CommentSection = () => {
                 <div className='flex items-start gap-2'>
                     <Avatar size="sm" className=''>
                         <Avatar.Image
-                            // src={}
-                            alt={''} />
-                        <Avatar.Fallback className='text-xs bg-white'>M</Avatar.Fallback>
+                            src={user?.image}
+                            alt={user?.name} />
+                        <Avatar.Fallback className='text-xs bg-white'>{user?.name[0]}</Avatar.Fallback>
                     </Avatar>
                     <form onSubmit={handleComment} className='flex-1'>
                         <textarea
@@ -38,7 +34,7 @@ const CommentSection = () => {
                             value={comment}
                             onChange={(e) => { setComment(e.target.value) }}
                             placeholder="Add your comment"
-                            className={'shadow-none w-full py-1 px-4 bg-white rounded-xl focus:outline-(--color-primary)/80'} />
+                            className={'shadow-none w-full py-1 px-4 bg-white rounded-xl focus:outline-(--color-primary)/80 py-1'} />
 
                         <div className='flex justify-end gap-3 mt-2'>
                             {

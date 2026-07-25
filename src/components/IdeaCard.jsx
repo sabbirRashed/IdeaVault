@@ -5,7 +5,9 @@ import React from 'react';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
 const IdeaCard = ({ idea }) => {
-    const { _id, ideaTitle, shortDescription, category, tags, imageURL, } = idea
+    const { _id, ideaTitle, shortDescription, category, tags, imageURL, creatorName, creatorImage
+    } = idea
+    console.log("data:", idea);
     return (
         <div className=' space-y-6 border idea-card p-4 rounded-2xl'>
             <div className='relative'>
@@ -32,11 +34,11 @@ const IdeaCard = ({ idea }) => {
                     <div className='flex items-center gap-1'>
                         <Avatar size="sm" className='w-6 h-6'>
                             <Avatar.Image
-                                // src={}
-                                alt={''} />
-                            <Avatar.Fallback className='text-xs'>M</Avatar.Fallback>
+                                src={creatorImage}
+                                alt={creatorName} />
+                            <Avatar.Fallback className='text-xs'>{creatorName && creatorName[0]}</Avatar.Fallback>
                         </Avatar>
-                        <span className='text-sm font-medium'>Sabbir Rahman</span>
+                        <span className='text-sm font-medium'>{creatorName}</span>
                     </div>
 
                     <Link href={`/ideaDetails/${_id}`}>
