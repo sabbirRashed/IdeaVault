@@ -1,4 +1,5 @@
 "use client"
+import { postIdea } from '@/lib/action';
 import { FieldError, Form, Input, Label, ListBox, TextField, Select, Checkbox, CheckboxGroup, TextArea, Button } from '@heroui/react';
 import { col } from 'framer-motion/client';
 import React, { useState } from 'react';
@@ -10,18 +11,22 @@ const AddIdeaCard = () => {
 
         const formData = new FormData(e.currentTarget);
         const newIdeaData = Object.fromEntries(formData.entries());
-        console.log('newIdea:', newIdeaData);
-
+        
         const { ideaTitle, category, imageUrl, estimatedBudget, targetAudience
             , problemStatement, proposedSolution, shortDescription, detailedDescription
 
         } = newIdeaData
+        
+        const result = await postIdea({
+
+        })
 
     }
 
 
     return (
         <div className="border border-(--color-primary) shadow-2xl shadow-amber-600 rounded-2xl max-w-5xl mx-auto p-10 mt-6 space-y-4">
+            <h3 className='text-xl md:text-2xl font-medium font-sora text-center'>Add New Idea</h3>
             <Form
                 onSubmit={handleSubmit}
                 className='space-y-4 md:space-y-6'>
