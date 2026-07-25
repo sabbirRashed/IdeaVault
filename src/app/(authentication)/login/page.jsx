@@ -3,7 +3,7 @@
 import { authClient } from "@/lib/auth-client";
 import { Button, Card, Checkbox, FieldError, Form, Input, Label, Separator, TextField } from "@heroui/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
@@ -13,6 +13,8 @@ import { FcGoogle } from "react-icons/fc";
 const LoginPage = () => {
 
     const router = useRouter()
+    const searchParams = useSearchParams();
+    const redirect = searchParams.get('redirect')
     const [isClosed, setIsClosed] = useState(true)
 
     const handleLogin = async (e) => {
@@ -28,7 +30,7 @@ const LoginPage = () => {
 
         if (data) {
             toast.success('Successfully login your account');
-            router.push('/')
+            router.replace(redirect);
         }
         else {
             toast.error(error.message)

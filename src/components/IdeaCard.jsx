@@ -7,7 +7,7 @@ import { FaArrowRightLong } from 'react-icons/fa6';
 const IdeaCard = ({ idea }) => {
     const { _id, ideaTitle, shortDescription, category, tags, imageURL, creatorName, creatorImage
     } = idea
-    console.log("data:", idea);
+    
     return (
         <div className=' space-y-6 border idea-card p-4 rounded-2xl'>
             <div className='relative'>

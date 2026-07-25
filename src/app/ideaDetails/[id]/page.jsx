@@ -1,11 +1,10 @@
 import CommentSection from '@/components/CommentSection';
-import { getIdeaById } from '@/lib/data';
+import { getAllComments, getIdeaById } from '@/lib/data';
 import { Avatar, Chip } from '@heroui/react';
 import Image from 'next/image';
 import React from 'react';
-import { BiCategory, BiUserPlus } from 'react-icons/bi';
-import { FaMoneyBillWave, FaRegCommentDots, FaUserPlus } from 'react-icons/fa';
-import { FaSackDollar } from 'react-icons/fa6';
+import { BiCategory } from 'react-icons/bi';
+import { FaRegCommentDots, } from 'react-icons/fa';
 import { FcIdea } from 'react-icons/fc';
 import { IoWarningOutline } from 'react-icons/io5';
 import { LiaTagsSolid } from 'react-icons/lia';
@@ -15,9 +14,12 @@ import { TbTargetArrow, TbUserPlus } from 'react-icons/tb';
 
 const IdeaDetails = async ({ params }) => {
     const { id } = await params;
+
+    const allComments = await getAllComments(id);
+    console.log(allComments, ":allcoments");
+
     const idea = await getIdeaById(id);
     const {
-        _id,
         ideaTitle,
         shortDescription,
         detailedDescription,
@@ -98,7 +100,7 @@ const IdeaDetails = async ({ params }) => {
 
                 <div className='space-y-1'>
                     <h3 className='flex items-center gap-2 font-semibold'><FaRegCommentDots size={16} /> Comment count</h3>
-                    <p className='text-sm ml-6'>15</p>
+                    <p className='text-sm ml-6'>{allComments.length}</p>
                 </div>
 
             </div>
@@ -176,7 +178,7 @@ const IdeaDetails = async ({ params }) => {
             </div>
 
             {/* comment */}
-            <CommentSection idea={idea}/>
+            <CommentSection allComments={allComments} ideaId={id} />
         </div>
     );
 };

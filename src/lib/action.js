@@ -15,3 +15,29 @@ export const postIdea = async(idea)=>{
     revalidatePath("/my-ideas")
     return result;
 }
+
+// comments api
+export const postComment = async(comment, ideaId)=>{
+    const res = await fetch(`http://localhost:5000/comments`, {
+        method: "POST",
+        headers:{
+            "content-type": "application/json",
+        },
+        body: JSON.stringify(comment)
+    })
+    const result = res.json();
+    revalidatePath(`ideaDetails/${ideaId}`)
+    return result;
+};
+
+export const updateComment = async(id, modifiedComment)=>{
+    const res = await fetch(`http://localhost:5000/comments/${id}`,{
+        method: "PATCH",
+        headers: {
+            "content-type": "application/json",
+        },
+        body: JSON.stringify(modifiedComment)
+    })
+    revalidatePath()
+}
+
