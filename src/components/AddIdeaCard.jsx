@@ -148,49 +148,6 @@ const AddIdeaCard = () => {
                     <FieldError />
                 </TextField>
 
-                {/* <CheckboxGroup name="Tags"
-                    value={tags}
-                    onValueChange={setTags}
-                >
-                    <Label>Tags</Label>
-                    <div className='flex items-center gap-6 md:gap-10 flex-wrap'>
-                        <Checkbox value="ai">
-                            <Checkbox.Content>
-                                <Checkbox.Control>
-                                    <Checkbox.Indicator />
-                                </Checkbox.Control>
-                                AI
-                            </Checkbox.Content>
-                        </Checkbox>
-                        <Checkbox value="education">
-                            <Checkbox.Content>
-                                <Checkbox.Control>
-                                    <Checkbox.Indicator />
-                                </Checkbox.Control>
-                                Education
-                            </Checkbox.Content>
-                        </Checkbox>
-                        <Checkbox value="health">
-                            <Checkbox.Content>
-                                <Checkbox.Control>
-                                    <Checkbox.Indicator />
-                                </Checkbox.Control>
-                                Health
-                            </Checkbox.Content>
-                        </Checkbox>
-                        <Checkbox value="agriculture">
-                            <Checkbox.Content>
-                                <Checkbox.Control>
-                                    <Checkbox.Indicator />
-                                </Checkbox.Control>
-                                Agriculture
-                            </Checkbox.Content>
-                        </Checkbox>
-                    </div>
-                    
-                </CheckboxGroup> */}
-
-
                 <TextField name="shortDescription" isRequired>
                     <Label>Short Description</Label>
                     <TextArea
