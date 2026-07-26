@@ -53,7 +53,7 @@ const IdeaDetails = async ({ params }) => {
                     className='w-full h-65 md:h-80 object-cover '></Image>
 
                 <div className='absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-black/20'></div>
-                <Chip className='bg-(--color-secondary)/90 text-white absolute top-2 left-2 md:top-6 md:left-6'>{category}</Chip>
+                <Chip className='bg-(--color-secondary)/90 text-white absolute top-2 left-2 md:top-6 md:left-6'>{category.toUpperCase()}</Chip>
 
                 <div className='absolute left-1/2 -translate-x-1/2 bottom-6 text-white'>
                     <h1 className='text-2xl md:text-4xl font-semibold font-sora text-center'>{ideaTitle}</h1>

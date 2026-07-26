@@ -2,7 +2,9 @@ import { Button, Chip } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { AiOutlineEdit } from 'react-icons/ai';
 import { FaArrowRightLong } from 'react-icons/fa6';
+import { LiaTrashAlt } from 'react-icons/lia';
 
 const MyIdeasPage = () => {
     return (
@@ -20,13 +22,21 @@ const MyIdeasPage = () => {
                             height={200}
                             width={400}
                             className=' w-full h-40 md:h-full'></Image>
-                            <Chip className='bg-(--color-secondary)/90 text-white absolute top-2 left-2'>Education</Chip>
+                        <Chip className='bg-(--color-secondary)/90 text-white absolute top-2 left-2'>Education</Chip>
                     </div>
 
                     {/* card content */}
                     <div className='md:flex-3 space-y-4'>
-                        <div>
-                            <h2 className='text-xl md:text-2xl font-medium font-sora text-foreground/70'>MediConnect</h2>
+                        <div className=''>
+                            <div className='flex justify-between items-center'>
+                                <h2 className='text-xl md:text-2xl font-medium font-sora text-foreground/70'>MediConnect</h2>
+                                <div className='flex justify-between items-center gap-4 '>
+                                    <Button size='sm' isIconOnly className={'bg-(--color-secondary)/20 text-(--color-secondary) hover:bg-(--color-secondary)/30 hover:text-(--color-secondary-hover) transition-colors duration-300'}>
+                                        <AiOutlineEdit className='w-5 h-5' />
+                                    </Button>
+                                    <Button size='sm' isIconOnly className={'bg-danger/20 text-danger hover:bg-danger/30 transition-colors duration-300'}><LiaTrashAlt className='w-5 h-5 ' /></Button>
+                                </div>
+                            </div>
                             <p className='text-lg md:text-xl font-medium font-sora text-foreground/70 line-clamp-1 mt-3'>A telemedicine platform connecting patients with healthcare professionals.</p>
                         </div>
                         <p className='text-foreground/70 line-clamp-2'>MediConnect is a comprehensive digital healthcare platform that enables patients to book appointments, consult doctors through secure video calls, receive digital prescriptions, and maintain lifelong electronic medical records. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, officiis.</p>

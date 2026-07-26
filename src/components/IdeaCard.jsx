@@ -16,7 +16,7 @@ const IdeaCard = ({ idea }) => {
                     width={160}
                     height={160}
                     className='w-full h-40'></Image>
-                <Chip className='bg-(--color-secondary)/90 text-white absolute top-2 left-2'>{category}</Chip>
+                <Chip className='bg-(--color-secondary)/90 text-white absolute top-2 left-2'>{category.toUpperCase()}</Chip>
             </div>
 
             <div className=''>
