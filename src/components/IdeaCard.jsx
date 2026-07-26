@@ -9,7 +9,7 @@ const IdeaCard = ({ idea }) => {
     } = idea
     
     return (
-        <div className=' space-y-6 border idea-card p-4 rounded-2xl'>
+        <div className=' space-y-6 border idea-card p-4 rounded-2xl shadow hover:shadow-xl hover:shadow-amber-600/20 hover:-translate-y-1 transition-all duration-300'>
             <div className='relative'>
                 <Image src={imageURL}
                     alt='image'

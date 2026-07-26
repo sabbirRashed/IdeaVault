@@ -48,7 +48,7 @@ const AddIdeaCard = () => {
 
 
     return (
-        <div className="border border-(--color-primary) shadow-2xl shadow-amber-600 rounded-2xl max-w-5xl mx-auto p-10 mt-6 space-y-4">
+        <div className="border border-(--color-primary) shadow-2xl shadow-amber-600/50 rounded-2xl max-w-5xl mx-auto p-10 mt-6 space-y-4">
             <h3 className='text-xl md:text-2xl font-medium font-sora text-center'>Add New Idea</h3>
             <Form
                 onSubmit={handleSubmit}

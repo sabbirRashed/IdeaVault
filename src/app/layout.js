@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
+import Provider from "./provider";
 
 
 const sora = Sora({
@@ -24,14 +25,17 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${sora.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
- 
+
+        <Provider>
           <Navbar />
           {children}
           <Footer />
           <Toaster />
+        </Provider>
 
 
       </body>

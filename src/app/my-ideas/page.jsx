@@ -1,8 +1,10 @@
 import MyIdeaCard from '@/components/MyIdeaCard';
 import { auth } from '@/lib/auth';
 import { getIdeaByUserId } from '@/lib/data';
+import { Button, Link } from '@heroui/react';
 import { headers } from 'next/headers';
 import React from 'react';
+import { FcIdea } from 'react-icons/fc';
 
 
 const MyIdeasPage = async () => {
@@ -20,7 +22,7 @@ const MyIdeasPage = async () => {
 
             {/* my idea container and heading*/}
             <h3 className='text-xl md:text-2xl font-medium font-sora text-foreground/70 mt-10'>Total ideas ({myIdeas.length})</h3>
-            <div className='border min-h-200 mt-4 p-4 bg-white space-y-4'>
+            <div className='border min-h-200 mt-4 p-4 idea-card space-y-4'>
                 {
                     myIdeas.length > 0 ? <>
                         {
@@ -28,7 +30,25 @@ const MyIdeasPage = async () => {
                                 idea={idea}></MyIdeaCard>)
                         }
                     </> : <>
+                        <div className="border border-(--color-border) bg-(--color-bg) rounded-2xl p-10 text-center flex flex-col items-center justify-center">
+                            <div className="w-16 h-16 rounded-full bg-(--color-secondary-light) flex items-center justify-center mb-4">
+                                <FcIdea size={32} />
+                            </div>
 
+                            <h2 className="text-2xl font-semibold mb-2">
+                                No Ideas Yet
+                            </h2>
+
+                            <p className="text-(--color-text-muted) max-w-md mb-6">
+                                You haven't shared any ideas yet. Start by creating your first idea and inspire the community.
+                            </p>
+
+                            <Link href="/add-idea">
+                                <Button className="btn-primary">
+                                    Create Your First Idea
+                                </Button>
+                            </Link>
+                        </div>
                     </>
                 }
             </div>

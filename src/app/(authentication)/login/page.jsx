@@ -14,7 +14,7 @@ const LoginPage = () => {
 
     const router = useRouter()
     const searchParams = useSearchParams();
-    const redirect = searchParams.get('redirect')
+    const redirect = searchParams.get('redirect') || "/"
     const [isClosed, setIsClosed] = useState(true)
 
     const handleLogin = async (e) => {
@@ -28,7 +28,7 @@ const LoginPage = () => {
             password: loginData.password
         })
 
-        if (data) {
+        if (data?.user) {
             toast.success('Successfully login your account');
             router.replace(redirect);
         }

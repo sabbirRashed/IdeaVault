@@ -81,7 +81,7 @@ body {
 .idea-card {
     background-color: var(--color-card);
     border: 1px solid var(--color-border);
-    box-shadow: var(--shadow-card);
+    
 }
 
 .btn-primary {

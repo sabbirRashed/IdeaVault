@@ -11,6 +11,7 @@ import { FcGoogle } from 'react-icons/fc';
 
 const RegisterPage = () => {
     const [isClosed, setIsClosed] = useState(true)
+    const router = useRouter();
 
     const handleForm = async (e) => {
         e.preventDefault();
@@ -25,8 +26,18 @@ const RegisterPage = () => {
             email,
             password,
             image: imageUrl,
-            callbackURL: '/',
         });
+        
+        if(error){
+            toast.error(error.message)
+            return
+        }
+
+        if(data?.user){
+            toast.success('Account created successfully')
+            router.push('/')
+        }
+        
 
     };
 
