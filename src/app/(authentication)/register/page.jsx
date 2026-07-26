@@ -10,7 +10,6 @@ import { FcGoogle } from 'react-icons/fc';
 
 
 const RegisterPage = () => {
-    const router = useRouter();
     const [isClosed, setIsClosed] = useState(true)
 
     const handleForm = async (e) => {
@@ -26,13 +25,16 @@ const RegisterPage = () => {
             email,
             password,
             image: imageUrl,
-            callbackURL: '/'
-        })
+            callbackURL: '/',
+        });
 
-        // if (data) {
-        //     router.push('/')
-        // }
     };
+
+    const handleGoogleSignIn = async () => {
+        const { data: googleData, error } = await authClient.signIn.social({
+            provider: "google",
+        });
+    }
 
     return (
         <div className='min-h-screen w-11/12 max-w-7xl mx-auto py-30'>
@@ -84,7 +86,7 @@ const RegisterPage = () => {
                     </TextField>
 
                     <TextField
-                    className={'relative'}
+                        className={'relative'}
                         isRequired
                         minLength={6}
                         name="password"
@@ -132,7 +134,7 @@ const RegisterPage = () => {
                     <Separator className="flex-1" />
                 </div>
 
-                <Button variant="outline" className="w-full rounded-full border border-(--color-primary)">
+                <Button variant="outline" onClick={handleGoogleSignIn} className="w-full rounded-full border border-(--color-primary)">
                     <FcGoogle />
                     Sign Up With Google
                 </Button>

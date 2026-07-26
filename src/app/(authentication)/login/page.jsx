@@ -41,11 +41,6 @@ const LoginPage = () => {
         const { data, error } = await authClient.signIn.social({
             provider: "google",
         });
-
-        if (data) {
-            router.push('/')
-        }
-
     }
 
 
