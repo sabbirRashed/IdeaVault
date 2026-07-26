@@ -10,6 +10,12 @@ export const getIdeaById = async(id)=>{
     return result;
 }
 
+export const getIdeaByUserId = async(userId)=>{
+    const res = await fetch(`http://localhost:5000/ideas/${userId}`);
+    const resutl = await res.json();
+    return resutl;
+}
+
 export const getAllComments = async(ideaId)=>{
     const res = await fetch(`http://localhost:5000/comments/${ideaId}`);
     const result = await res.json();

@@ -1,4 +1,7 @@
+import { auth } from '@/lib/auth';
+import { getIdeaByUserId } from '@/lib/data';
 import { Button, Chip } from '@heroui/react';
+import { headers } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -6,7 +9,14 @@ import { AiOutlineEdit } from 'react-icons/ai';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { LiaTrashAlt } from 'react-icons/lia';
 
-const MyIdeasPage = () => {
+const MyIdeasPage = async () => {
+
+    const {user} = await auth.api.getSession({
+        headers: await headers()
+    })
+    
+    const myIdeas = await getIdeaByUserId(user.id);
+    console.log('my ideas:', myIdeas);
     return (
         <div className='w-11/12 max-w-7xl mx-auto py-20 md:py-30'>
             <h2 className='text-2xl md:text-4xl font-bold font-sora'>My Ideas</h2>
