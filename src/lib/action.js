@@ -16,6 +16,20 @@ export const postIdea = async(idea)=>{
     return result;
 }
 
+export const updateIdea = async(ideaId, modifiedIdea)=>{
+    const res = await fetch(`http://localhost:5000/ideas/${ideaId}`, {
+        method: "PATCH",
+        headers: {
+            "content-type": "application/json",
+        },
+        body: JSON.stringify(modifiedIdea),
+    });
+    const result = res.json();
+    revalidatePath("/ideas");
+    revalidatePath("/my-ideas");
+    return result;
+}
+
 // comments api
 export const postComment = async(comment, ideaId)=>{
     const res = await fetch(`http://localhost:5000/comments`, {

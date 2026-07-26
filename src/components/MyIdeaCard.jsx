@@ -38,7 +38,7 @@ const MyIdeaCard = ({ idea }) => {
                     alt={ideaTitle}
                     height={200}
                     width={400}
-                    className=' w-full h-40 md:h-full'></Image>
+                    className=' w-full h-full'></Image>
                 <Chip className='bg-(--color-secondary)/90 text-white absolute top-2 left-2'>{category.toUpperCase()}</Chip>
             </div>
 

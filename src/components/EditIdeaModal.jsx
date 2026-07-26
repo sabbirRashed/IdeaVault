@@ -1,9 +1,16 @@
+"use client"
+import { updateIdea } from '@/lib/action';
 import { Button, FieldError, Form, Input, Label, ListBox, Modal, TextArea, TextField, Select, Surface } from '@heroui/react';
+import { useRouter } from 'next/navigation';
 import React from 'react';
+import toast from 'react-hot-toast';
 import { AiOutlineEdit } from 'react-icons/ai';
 
 const EditIdeaModal = ({ idea }) => {
+    const router = useRouter();
+
     const {
+        _id,
         ideaTitle,
         shortDescription,
         detailedDescription,
@@ -19,6 +26,24 @@ const EditIdeaModal = ({ idea }) => {
         createdAt
     } = idea;
 
+    const handleEdit = async (e) => {
+        e.preventDefault();
+
+        const form = e.currentTarget;
+        const formData = new FormData(form);
+        const modifiedIdeaData = Object.fromEntries(formData.entries());
+
+        const result = await updateIdea(_id, modifiedIdeaData);
+        
+        if(result.modifiedCount >0){
+            router.refresh()
+            toast.success('Update idea successfully')
+        }else{
+            toast.error('Something went wrong!')
+        }
+    }
+
+
     return (
         <div>
 
@@ -29,7 +54,7 @@ const EditIdeaModal = ({ idea }) => {
                 </Button>
                 <Modal.Backdrop>
                     <Modal.Container placement="auto">
-                        <Modal.Dialog className="sm:max-w-xl">
+                        <Modal.Dialog className="sm:max-w-2xl">
                             <Modal.CloseTrigger />
                             <Modal.Header>
                                 <Modal.Heading className='text-center text-(--color-primary)'>Edit Your Idea</Modal.Heading>
@@ -37,7 +62,7 @@ const EditIdeaModal = ({ idea }) => {
                             <Modal.Body className="p-6">
                                 <Surface variant="default">
                                     <Form
-                                        // onSubmit={handleSubmit}
+                                        onSubmit={handleEdit}
                                         className='space-y-4 md:space-y-6'>
                                         {/* tiele */}
                                         <TextField
@@ -112,12 +137,12 @@ const EditIdeaModal = ({ idea }) => {
                                             </Select>
 
                                             {/* budget */}
-                                            <TextField 
-                                            name="estimatedBudget" 
-                                            type="number" 
-                                            className={'flex-1'} 
-                                            isRequired
-                                            defaultValue={estimatedBudget}>
+                                            <TextField
+                                                name="estimatedBudget"
+                                                type="number"
+                                                className={'flex-1'}
+                                                isRequired
+                                                defaultValue={estimatedBudget}>
                                                 <Label>Budget (USD)</Label>
                                                 <Input
                                                     type="number"
@@ -143,10 +168,10 @@ const EditIdeaModal = ({ idea }) => {
                                             <FieldError />
                                         </TextField>
 
-                                        <TextField 
-                                        name="shortDescription" 
-                                        isRequired
-                                        defaultValue={shortDescription}>
+                                        <TextField
+                                            name="shortDescription"
+                                            isRequired
+                                            defaultValue={shortDescription}>
                                             <Label>Short Description</Label>
                                             <TextArea
                                                 rows={1}
@@ -157,10 +182,10 @@ const EditIdeaModal = ({ idea }) => {
                                         </TextField>
 
 
-                                        <TextField 
-                                        name="detailedDescription" 
-                                        isRequired
-                                        defaultValue={detailedDescription}>
+                                        <TextField
+                                            name="detailedDescription"
+                                            isRequired
+                                            defaultValue={detailedDescription}>
                                             <Label>Detailed Description</Label>
                                             <TextArea
                                                 placeholder="Input detailed description..."
@@ -169,10 +194,10 @@ const EditIdeaModal = ({ idea }) => {
                                             <FieldError />
                                         </TextField>
 
-                                        <TextField 
-                                        name="problemStatement" 
-                                        isRequired
-                                        defaultValue={problemStatement}>
+                                        <TextField
+                                            name="problemStatement"
+                                            isRequired
+                                            defaultValue={problemStatement}>
                                             <Label>Problem</Label>
                                             <TextArea
                                                 rows={1}
@@ -182,10 +207,10 @@ const EditIdeaModal = ({ idea }) => {
                                             <FieldError />
                                         </TextField>
 
-                                        <TextField 
-                                        name="proposedSolution" 
-                                        isRequired
-                                        defaultValue={proposedSolution}>
+                                        <TextField
+                                            name="proposedSolution"
+                                            isRequired
+                                            defaultValue={proposedSolution}>
                                             <Label>Solution</Label>
                                             <TextArea
                                                 rows={1}
@@ -197,7 +222,7 @@ const EditIdeaModal = ({ idea }) => {
 
                                         <Modal.Footer className='flex justify-end items-center gap-4 scicky'>
                                             <Button slot="close" type='reset' variant='light' className={'border-(--color-danger) text-(--color-danger) hover:bg-(--color-danger)/20 transition-colors duration-300 px-6'}>Cancel</Button>
-                                            <Button slot="close" type='sumbit' className={'btn-primary transition-colors duration-300  px-6'}>Add Idea</Button>
+                                            <Button slot="close" type='sumbit' className={'btn-primary transition-colors duration-300  px-6'}>Update Idea</Button>
 
                                         </Modal.Footer>
                                     </Form>

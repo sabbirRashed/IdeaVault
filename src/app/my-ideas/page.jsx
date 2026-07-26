@@ -19,7 +19,7 @@ const MyIdeasPage = async () => {
             <p className='max-w-xl mt-2 text-sm md:text-base text-(--color-text-muted)'>Manage everything you've shared with the SparkNest community — edit, update, or remove anytime.</p>
 
             {/* my idea container and heading*/}
-            <h3 className='text-xl md:text-2xl font-medium font-sora text-foreground/70 mt-10'>Total ideas ()</h3>
+            <h3 className='text-xl md:text-2xl font-medium font-sora text-foreground/70 mt-10'>Total ideas ({myIdeas.length})</h3>
             <div className='border min-h-200 mt-4 p-4 bg-white space-y-4'>
                 {
                     myIdeas.length > 0 ? <>
