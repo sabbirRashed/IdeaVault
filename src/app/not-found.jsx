@@ -28,10 +28,10 @@ const notFoundPage = () => {
                 </div>
 
                 <h2 className="mt-4 text-xl md:text-2xl font-semibold font-sora ">
-                    This idea hasn't sparked yet
+                    This idea hasn&apose;t sparked yet
                 </h2>
                 <p className="mt-3 text-sm md:text-base text-(--color-text)/60">
-                    The page you're looking for doesn't exist, may have been moved, or the idea
+                    The page you&apose;re looking for doesn&apose;t exist, may have been moved, or the idea
                     behind it is still waiting to be born.
                 </p>
 

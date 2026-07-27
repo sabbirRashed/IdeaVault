@@ -50,7 +50,7 @@ const Navbar = () => {
                         <p className="font-bold text-lg text-(--color-secondary)"><span className="text-(--color-primary)">Spark</span>Nest</p>
                     </div>
 
-                    <ul className="hidden sm:flex justify-center gap-4">
+                    <ul className="hidden md:flex justify-center gap- lg:gap-4">
                         {publicLinks.map(item => {
                             return <Link
                                 key={item.to}
@@ -64,7 +64,7 @@ const Navbar = () => {
                                 return <Link
                                     key={item.to}
                                     href={item.to}
-                                    className={`px-3.5 py-2 rounded-full text-sm font-medium transition-colors ${pathName === item.to ? "bg-primary/10 text-(--color-primary)" : "text-foreground/60 hover:text-foreground hover:bg-foreground/5"}`}>
+                                    className={`px-2 lg:px-3.5 py-2 rounded-full text-sm font-medium transition-colors ${pathName === item.to ? "bg-primary/10 text-(--color-primary)" : "text-foreground/60 hover:text-foreground hover:bg-foreground/5"}`}>
                                     <li>{item.label}</li>
                                 </Link>
                             })

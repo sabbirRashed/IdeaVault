@@ -111,7 +111,7 @@ const LoginForm = () => {
             </Button>
 
             <div className="text-center space-x-2">
-                <span className='text-sm text-(--color-text-muted)'>Don't have an account?</span>
+                <span className='text-sm text-(--color-text-muted)'>Don&apose;t have an account?</span>
                 <Link href={'/register'} className={'text-(--color-primary) font-medium'}>Sign Up</Link>
             </div>
         </div>

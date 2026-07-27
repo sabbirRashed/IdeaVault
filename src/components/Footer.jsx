@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
@@ -6,8 +7,18 @@ const Footer = () => {
         <footer className=' py-30 bg-(--color-footer-bg)'>
 
             <div className='w-11/12 max-w-7xl mx-auto'>
-                <div className='grid grid-cols-1 md:grid-cols-4 gap-6'>
-                    <h2 className="text-5xl font-semibold text-(--color-primary)">SparkNest</h2>
+                <div className='grid items-start grid-cols-1 md:grid-cols-5 gap-6'>
+                    <div className='md:col-span-2'>
+                        <div className="flex items-center">
+                            <Image
+                                src={'/assets/sparkNestLogo.png'}
+                                alt="logo"
+                                width={100}
+                                height={100}></Image>
+                            <p className="font-bold text-4xl text-(--color-secondary)"><span className="text-(--color-primary)">Spark</span>Nest</p>
+                        </div>
+                        <p className='text-white/50'>Discover, share, and grow innovative ideas with a community of creators and problem solvers.</p>
+                    </div>
 
                     <ul>
                         <h2 className='mb-3 tracking-wide text-white'>QUICK LINKS</h2>
