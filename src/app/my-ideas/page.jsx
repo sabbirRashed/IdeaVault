@@ -22,7 +22,7 @@ const MyIdeasPage = async () => {
 
             {/* my idea container and heading*/}
             <h3 className='text-xl md:text-2xl font-medium font-sora text-foreground/70 mt-10'>Total ideas ({myIdeas.length})</h3>
-            <div className='border min-h-200 mt-4 p-4 idea-card space-y-4'>
+            <div className='border mt-4 p-4 idea-card space-y-4'>
                 {
                     myIdeas.length > 0 ? <>
                         {
@@ -43,7 +43,7 @@ const MyIdeasPage = async () => {
                                 You haven't shared any ideas yet. Start by creating your first idea and inspire the community.
                             </p>
 
-                            <Link href="/add-idea">
+                            <Link href="/add-ideas">
                                 <Button className="btn-primary">
                                     Create Your First Idea
                                 </Button>

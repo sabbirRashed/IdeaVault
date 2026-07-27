@@ -30,6 +30,18 @@ export const updateIdea = async(ideaId, modifiedIdea)=>{
     return result;
 }
 
+export const deleteIdea = async(ideaId)=>{
+    const res = await fetch(`http://localhost:5000/ideas/${ideaId}`, {
+        method: 'DELETE',
+        headers: {
+            'content-type': 'application/json',
+        }
+    })
+    const result = await res.json();
+    revalidatePath('/ideas')
+    revalidatePath('/my-ideas')
+}
+
 // comments api
 export const postComment = async(comment, ideaId)=>{
     const res = await fetch(`http://localhost:5000/comments`, {

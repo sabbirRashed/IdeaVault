@@ -51,7 +51,7 @@ const RegisterPage = () => {
         <div className='min-h-screen w-11/12 max-w-7xl mx-auto py-30'>
             <h2 className='text-center text-2xl md:text-3xl font-semibold tracking-wide'>Let's build your nest</h2>
             <p className='max-w-sm mx-auto text-center text-sm  text-[#6C696D] mt-1'>Share your idea. Get real feedback. Start today.</p>
-            <div className="border border-(--color-primary) shadow-2xl shadow-amber-600 rounded-2xl max-w-md mx-auto p-10 mt-6 space-y-4">
+            <div className="border border-(--color-primary) shadow-2xl shadow-amber-600/50 rounded-2xl max-w-md mx-auto p-10 mt-6 space-y-4">
 
                 <Form
                     onSubmit={handleForm}

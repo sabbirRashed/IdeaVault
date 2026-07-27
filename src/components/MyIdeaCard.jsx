@@ -5,10 +5,12 @@ import { AiOutlineEdit } from 'react-icons/ai';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { LiaTrashAlt } from 'react-icons/lia';
 import EditIdeaModal from './EditIdeaModal';
+import DeleteIdeaAlert from './DeleteIdeaAlert';
 
 const MyIdeaCard = ({ idea }) => {
 
     const {
+        _id,
         ideaTitle,
         shortDescription,
         detailedDescription,
@@ -50,10 +52,7 @@ const MyIdeaCard = ({ idea }) => {
                         <div className='flex justify-between items-center gap-4 '>
 
                             <EditIdeaModal idea={idea} />
-                            <Button size='sm' isIconOnly className={'bg-danger/20 text-danger hover:bg-danger/30 transition-colors duration-300'}>
-                                <LiaTrashAlt className='w-5 h-5 ' />
-                            </Button>
-
+                            <DeleteIdeaAlert idea={idea} />
                         </div>
                     </div>
                     <p className='text-lg md:text-xl font-medium font-sora text-foreground/70 line-clamp-1 mt-3'>{shortDescription}</p>
@@ -63,7 +62,7 @@ const MyIdeaCard = ({ idea }) => {
 
                 <div className='flex justify-between items-center'>
                     <h3><span className='font-medium'>createdAt: </span>{createdDate}</h3>
-                    <Link href={`/ideaDetails/`}>
+                    <Link href={`/ideaDetails/${_id}`}>
                         <Button size='sm' className={'text-xs btn-primary duration-300 transition-colors'}>
                             View Details <FaArrowRightLong />
                         </Button>
