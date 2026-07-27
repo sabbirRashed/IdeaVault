@@ -14,7 +14,7 @@ const MyIdeasPage = async () => {
     })
 
     const myIdeas = await getIdeaByUserId(user.id);
-    console.log('my ideas:', myIdeas);
+ 
     return (
         <div className='min-h-[80vh] w-11/12 max-w-7xl mx-auto py-20 md:py-30'>
             <h2 className='text-2xl md:text-4xl font-bold font-sora'>My Ideas ({myIdeas.length})</h2>
@@ -30,7 +30,7 @@ const MyIdeasPage = async () => {
                         }
                     </> : <>
                         <div className="border border-(--color-border) bg-(--color-bg) rounded-2xl p-10 text-center flex flex-col items-center justify-center">
-                            <div className="w-16 h-16 rounded-full bg-(--color-secondary-light) flex items-center justify-center mb-4">
+                            <div className="w-16 h-16 rounded-full bg-(--color-secondary)/20 flex items-center justify-center mb-4">
                                 <FcIdea size={32} />
                             </div>
 

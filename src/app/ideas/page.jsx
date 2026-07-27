@@ -4,7 +4,6 @@ import React from 'react';
 
 const AllIdeasPage = async () => {
     const ideas = await getAllIdeas();
-    console.log('all idea', ideas);
 
     return (
         <div className='w-11/12 max-w-7xl mx-auto py-20 md:py-30'>

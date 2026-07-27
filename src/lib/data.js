@@ -17,13 +17,13 @@ export const getIdeaByUserId = async(userId)=>{
 }
 
 export const getAllComments = async(ideaId)=>{
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comments/${ideaId}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comments/idea/${ideaId}`);
     const result = await res.json();
     return result
 }
 
 export const getCommentsByUserId = async(userId)=>{
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comments/${userId}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comments/user/${userId}`);
     const result = await res.json();
     return result;
 }

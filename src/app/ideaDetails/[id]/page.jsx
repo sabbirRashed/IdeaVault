@@ -16,7 +16,6 @@ const IdeaDetails = async ({ params }) => {
     const { id } = await params;
 
     const allComments = await getAllComments(id);
-    console.log(allComments, ":allcoments");
 
     const idea = await getIdeaById(id);
     const {

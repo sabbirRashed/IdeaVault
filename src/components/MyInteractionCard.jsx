@@ -5,7 +5,7 @@ import React from 'react';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { LiaTrashAlt } from 'react-icons/lia';
 
-const MyInteractionCard = () => {
+const MyInteractionCard = ({comment}) => {
     return (
         <div className='flex items-center gap-4 idea-card p-4 rounded-2xl group'>
             <Image src={'/assets/hero.png'}
@@ -18,7 +18,7 @@ const MyInteractionCard = () => {
             <div className='flex-1'>
                 <h3 className='text-sm text-(--color-text)/60'>You commented on
                     <Link href={`/ideaDetails/`}
-                        className='font-medium text-(--color-text) hover:text-(--color-primary)'> EcoBin</Link>
+                        className='font-medium text-(--color-text) hover:text-(--color-primary)'>{comment?.ideaTitle}</Link>
                 </h3>
                 <p className='text-sm text-(--color-text)/80 line-clamp-1 mt-1'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, sint.</p>
 
