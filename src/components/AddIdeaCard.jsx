@@ -39,11 +39,11 @@ const AddIdeaCard = () => {
             shortDescription,
             detailedDescription
         })
-        if(result.acknowledged){
+        if (result.acknowledged) {
             toast.success('Successfully added a new post');
             form.reset()
             router.push('/ideas')
-        }else{
+        } else {
             toast.error('Something went wrong')
         }
 
@@ -51,7 +51,7 @@ const AddIdeaCard = () => {
 
 
     return (
-        <div className="border border-(--color-primary) shadow-2xl shadow-amber-600/50 rounded-2xl max-w-5xl mx-auto p-10 mt-6 space-y-4">
+        <div className="idea-card shadow-2xl shadow-amber-600/20 rounded-2xl max-w-3xl mx-auto p-10 mt-6 space-y-4">
             <h3 className='text-xl md:text-2xl font-medium font-sora text-center'>Add New Idea</h3>
             <Form
                 onSubmit={handleSubmit}
@@ -119,6 +119,26 @@ const AddIdeaCard = () => {
                                 </ListBox.Item>
                                 <ListBox.Item id="Agriculture" textValue="Agriculture">
                                     Agriculture
+                                    <ListBox.ItemIndicator />
+                                </ListBox.Item>
+                                <ListBox.Item id="Sports" textValue="Sports">
+                                    Sports
+                                    <ListBox.ItemIndicator />
+                                </ListBox.Item>
+                                <ListBox.Item id="food" textValue="Food">
+                                    Food
+                                    <ListBox.ItemIndicator />
+                                </ListBox.Item>
+                                <ListBox.Item id="transportation" textValue="Transportation">
+                                    Transportation
+                                    <ListBox.ItemIndicator />
+                                </ListBox.Item>
+                                <ListBox.Item id="business" textValue="Business">
+                                    Business
+                                    <ListBox.ItemIndicator />
+                                </ListBox.Item>
+                                <ListBox.Item id="environment" textValue="Environment">
+                                    Environment
                                     <ListBox.ItemIndicator />
                                 </ListBox.Item>
                             </ListBox>

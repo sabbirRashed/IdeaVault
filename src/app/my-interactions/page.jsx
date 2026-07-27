@@ -4,9 +4,12 @@ import { getCommentsByUserId } from '@/lib/data';
 import { Button } from '@heroui/react';
 import { headers } from 'next/headers';
 import Link from 'next/link';
-import { FcIdea } from 'react-icons/fc';
 import { HiOutlineChatBubbleLeftRight } from 'react-icons/hi2';
 
+export const metadata = {
+    title: "My Interactions || SparkNest",
+    description: "See every idea you've commented on, all in one place.",
+};
 
 const MyInterActions = async () => {
 

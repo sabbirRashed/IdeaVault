@@ -4,6 +4,8 @@ import Link from 'next/link';
 import React from 'react';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { LiaTrashAlt } from 'react-icons/lia';
+import CommentEditModal from './CommentEditModal';
+import DeleteCommentAlert from './DeleteCommentAlert';
 
 const MyInteractionCard = ({ commentData }) => {
     const {ideaId, ideaTitle, ideaImage, comment, createdAt } = commentData;
@@ -32,12 +34,8 @@ const MyInteractionCard = ({ commentData }) => {
                 <div className='flex justify-between items-center mt-2'>
                     <span className='text-sm text-(--color-text)/40 py-1'>{createdDate}</span>
                     <div className='flex md:hidden group-hover:flex items-center gap-2'>
-                        <Button size='sm' isIconOnly className={'w-7 h-7 bg-(--color-secondary)/20 text-(--color-secondary) hover:bg-(--color-secondary)/30 hover:text-(--color-secondary-hover) transition-colors duration-300'}>
-                            <AiOutlineEdit className='w-4 h-4' />
-                        </Button>
-                        <Button size='sm' isIconOnly className={'w-7 h-7 bg-danger/20 text-danger hover:bg-danger/30 transition-colors duration-300'}>
-                            <LiaTrashAlt className='w-4 h-4 ' />
-                        </Button>
+                        <CommentEditModal comment={commentData}/>
+                       <DeleteCommentAlert comment={commentData}/>
                     </div>
                 </div>
             </div>

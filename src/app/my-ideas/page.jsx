@@ -6,6 +6,11 @@ import { headers } from 'next/headers';
 import React from 'react';
 import { FcIdea } from 'react-icons/fc';
 
+export const metadata = {
+    title: "My Ideas || SparkNest",
+    description: "Manage the ideas you've shared — update details, track engagement, or remove ones you've moved past.",
+};
+
 
 const MyIdeasPage = async () => {
 

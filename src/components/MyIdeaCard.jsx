@@ -34,7 +34,7 @@ const MyIdeaCard = ({ idea }) => {
 
 
     return (
-        <div className='flex flex-col md:flex-row justify-between items-center gap-6 md:gap-10 p-4 border border-(--color-border) bg-(--color-bg) hover:shadow-lg hover:shadow-amber-600/20 hover:-translate-y-1 transition-all duration-300'>
+        <div className='flex flex-col md:flex-row justify-between items-center gap-6 md:gap-10 p-4 idea-card shadow rounded-2xl  hover:shadow-lg hover:shadow-amber-600/20 hover:-translate-y-1 transition-all duration-300'>
             <div className='md:flex-1 w-full relative'>
                 <Image src={imageURL}
                     alt={ideaTitle}

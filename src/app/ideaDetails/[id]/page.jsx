@@ -12,6 +12,11 @@ import { MdOutlineTimer } from 'react-icons/md';
 import { RiMoneyDollarBoxLine } from 'react-icons/ri';
 import { TbTargetArrow, TbUserPlus } from 'react-icons/tb';
 
+export const metadata = {
+    title: "Explore Ideas || SparkNest",
+    description: "Browse startup ideas across tech, health, education, and more. Search, filter, and find the next big thing before it happens.",
+};
+
 const IdeaDetails = async ({ params }) => {
     const { id } = await params;
 
@@ -52,7 +57,7 @@ const IdeaDetails = async ({ params }) => {
                     className='w-full h-65 md:h-80 object-cover '></Image>
 
                 <div className='absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-black/20'></div>
-                <Chip className='bg-(--color-secondary)/90 text-white absolute top-2 left-2 md:top-6 md:left-6'>{category.toUpperCase()}</Chip>
+                <Chip className='bg-(--color-secondary)/90 text-white absolute top-2 left-2 md:top-6 md:left-6 tracking-wide'>{category.toUpperCase()}</Chip>
 
                 <div className='absolute left-1/2 -translate-x-1/2 bottom-6 text-white'>
                     <h1 className='text-2xl md:text-4xl font-semibold font-sora text-center'>{ideaTitle}</h1>
@@ -128,7 +133,7 @@ const IdeaDetails = async ({ params }) => {
                 <div className=' border w-full p-4 space-y-4 sticky top-24'>
                     <div>
                         <h3 className='flex items-center gap-2 font-semibold'><BiCategory />Category</h3>
-                        <Chip className='bg-(--color-secondary)/90 text-white ml-6'>{category}</Chip>
+                        <Chip className='bg-(--color-secondary)/90 text-white ml-6 tracking-wide'>{category.toUpperCase()}</Chip>
                     </div>
 
                     <div>

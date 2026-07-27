@@ -2,6 +2,11 @@ import IdeaCard from '@/components/IdeaCard';
 import { getAllIdeas } from '@/lib/data';
 import React from 'react';
 
+export const metadata = {
+    title: "Explore Ideas || SparkNest",
+    description: "Browse startup ideas across tech, health, education, and more. Search, filter, and find the next big thing before it happens.",
+};
+
 const AllIdeasPage = async () => {
     const ideas = await getAllIdeas();
 
