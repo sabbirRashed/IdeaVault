@@ -177,7 +177,7 @@ const IdeaDetails = async ({ params }) => {
             </div>
 
             {/* comment */}
-            <CommentSection allComments={allComments} ideaId={id} />
+            <CommentSection allComments={allComments} idea={idea} />
         </div>
     );
 };

@@ -9,7 +9,7 @@ import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { LuDot } from 'react-icons/lu';
 
-const CommentSection = ({ allComments, ideaId }) => {
+const CommentSection = ({ allComments, idea }) => {
 
 
     const [comment, setComment] = useState('');
@@ -20,14 +20,17 @@ const CommentSection = ({ allComments, ideaId }) => {
     const handleComment = async (e) => {
         e.preventDefault();
 
+        const {_id, ideaTitle,} = idea;
+        
         const commentAndInfo = {
-            ideaId,
+            ideaId: _id,
+            ideaTitle,
             userId: user?.id,
             userName: user?.name,
             userImage: user?.image,
             comment: comment,
         }
-        const result = await postComment(commentAndInfo, ideaId);
+        const result = await postComment(commentAndInfo, _id);
 
         if (result.acknowledged) {
             toast.success('successfully added a comment');
