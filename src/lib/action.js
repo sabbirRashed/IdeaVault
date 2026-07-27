@@ -1,9 +1,10 @@
 "use server"
 
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export const postIdea = async(idea)=>{
-    const res = await fetch(`http://localhost:5000/ideas`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas`, {
         method: "POST",
         headers:{
             "content-type": "application/json",
@@ -17,7 +18,7 @@ export const postIdea = async(idea)=>{
 }
 
 export const updateIdea = async(ideaId, modifiedIdea)=>{
-    const res = await fetch(`http://localhost:5000/ideas/${ideaId}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas/${ideaId}`, {
         method: "PATCH",
         headers: {
             "content-type": "application/json",
@@ -31,7 +32,7 @@ export const updateIdea = async(ideaId, modifiedIdea)=>{
 }
 
 export const deleteIdea = async(ideaId)=>{
-    const res = await fetch(`http://localhost:5000/ideas/${ideaId}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas/${ideaId}`, {
         method: 'DELETE',
         headers: {
             'content-type': 'application/json',
@@ -44,7 +45,7 @@ export const deleteIdea = async(ideaId)=>{
 
 // comments api
 export const postComment = async(comment, ideaId)=>{
-    const res = await fetch(`http://localhost:5000/comments`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comments`, {
         method: "POST",
         headers:{
             "content-type": "application/json",
@@ -52,18 +53,19 @@ export const postComment = async(comment, ideaId)=>{
         body: JSON.stringify(comment)
     })
     const result = res.json();
-    revalidatePath(`ideaDetails/${ideaId}`)
+    revalidatePath(`/ideaDetails/${ideaId}`)
     return result;
 };
 
-export const updateComment = async(id, modifiedComment)=>{
-    const res = await fetch(`http://localhost:5000/comments/${id}`,{
+export const updateComment = async( modifiedComment, commentId, ideaId)=>{
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comments/${commentId}`,{
         method: "PATCH",
         headers: {
             "content-type": "application/json",
         },
         body: JSON.stringify(modifiedComment)
     })
-    revalidatePath()
+    revalidatePath(`/ideaDetails/${ideaId}`)
+    redirect(`/ideaDetails/${ideaId}`)
 }
 

@@ -12,7 +12,7 @@ const AllIdeasPage = async () => {
             <p className='max-w-xl mt-2 text-sm md:text-base text-(--color-text-muted)'>Browse ideas from innovators around the world, share your thoughts, and help great concepts grow.</p>
 
             {/* idea cards */}
-            <div className=' mt-20 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-10'>
+            <div className='mt-10 md:mt-15 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-10'>
                 {
                     ideas.map(idea => <IdeaCard key={idea._id} idea={idea}></IdeaCard>)
                 }

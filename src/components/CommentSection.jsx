@@ -13,7 +13,6 @@ const CommentSection = ({ allComments, ideaId }) => {
 
 
     const [comment, setComment] = useState('');
-    const router = useRouter();
 
     const { data } = authClient.useSession();
     const user = data?.user;
@@ -33,7 +32,6 @@ const CommentSection = ({ allComments, ideaId }) => {
         if (result.acknowledged) {
             toast.success('successfully added a comment');
             setComment('')
-            router.refresh()
 
         }
         else {

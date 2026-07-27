@@ -3,11 +3,13 @@ import { postIdea } from '@/lib/action';
 import { authClient } from '@/lib/auth-client';
 import { FieldError, Form, Input, Label, ListBox, TextField, Select, Checkbox, CheckboxGroup, TextArea, Button } from '@heroui/react';
 import { col } from 'framer-motion/client';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 
 const AddIdeaCard = () => {
 
+    const router = useRouter();
     const { data, isPending } = authClient.useSession();
     const user = data?.user;
 
@@ -40,6 +42,7 @@ const AddIdeaCard = () => {
         if(result.acknowledged){
             toast.success('Successfully added a new post');
             form.reset()
+            router.push('/ideas')
         }else{
             toast.error('Something went wrong')
         }
