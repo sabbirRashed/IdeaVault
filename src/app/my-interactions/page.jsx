@@ -1,3 +1,4 @@
+import MyInteractionCard from '@/components/MyInteractionCard';
 import { Button } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -14,7 +15,7 @@ const MyInterActions = () => {
             {/* interactions container */}
             <div className='min-h-20 max-w-3xl mx-auto mt-10 md:mt-15'>
 
-                
+                <MyInteractionCard/>
             </div>
         </div>
     );
