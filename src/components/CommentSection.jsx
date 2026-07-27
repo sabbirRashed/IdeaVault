@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 import { LiaTrashAlt } from 'react-icons/lia';
 import { LuDot } from 'react-icons/lu';
 import CommentEditModal from './CommentEditModal';
+import DeleteCommentAlert from './DeleteCommentAlert';
 
 const CommentSection = ({ allComments, idea }) => {
     const [comment, setComment] = useState('');
@@ -117,9 +118,7 @@ const CommentSection = ({ allComments, idea }) => {
                                     {
                                         comment.userId === user?.id && <div className='flex items-center gap-2'>
                                             <CommentEditModal comment={comment} ideaId={_id}/>
-                                            <Button size='sm' isIconOnly className={'w-7 h-7 bg-danger/20 text-danger hover:bg-danger/30 transition-colors duration-300'}>
-                                                <LiaTrashAlt className='w-4 h-4 ' />
-                                            </Button>
+                                            <DeleteCommentAlert comment={comment} />
                                         </div>
                                     }
                                 </div>
