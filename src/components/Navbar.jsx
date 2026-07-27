@@ -2,6 +2,7 @@
 import { authClient } from "@/lib/auth-client";
 import { Avatar, Button, } from "@heroui/react";
 import { useTheme } from "next-themes";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FiMoon } from "react-icons/fi";
@@ -40,8 +41,13 @@ const Navbar = () => {
             {/* Basic */}
             <nav className="w-11/12 max-w-7xl mx-auto ">
                 <header className="flex h-16 items-center justify-between px-6">
-                    <div className="flex items-center gap-3">
-                        <p className="font-bold">SparkNest</p>
+                    <div className="flex items-center ">
+                        <Image
+                        src={'/assets/sparkNestLogo.png'}
+                        alt="logo"
+                        width={60}
+                        height={60}></Image>
+                        <p className="font-bold text-lg text-(--color-secondary)"><span className="text-(--color-primary)">Spark</span>Nest</p>
                     </div>
 
                     <ul className="hidden sm:flex justify-center gap-4">
