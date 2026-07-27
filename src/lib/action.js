@@ -41,6 +41,7 @@ export const deleteIdea = async(ideaId)=>{
     const result = await res.json();
     revalidatePath('/ideas')
     revalidatePath('/my-ideas')
+    return result;
 }
 
 // comments api
@@ -65,7 +66,8 @@ export const updateComment = async( modifiedComment, commentId, ideaId)=>{
         },
         body: JSON.stringify(modifiedComment)
     })
+    const result = await res.json();
     revalidatePath(`/ideaDetails/${ideaId}`)
-    redirect(`/ideaDetails/${ideaId}`)
+    return result;
 }
 

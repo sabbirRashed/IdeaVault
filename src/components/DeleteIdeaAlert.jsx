@@ -3,6 +3,7 @@ import { deleteIdea } from '@/lib/action';
 import { AlertDialog, Button } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import toast from 'react-hot-toast';
 import { LiaTrashAlt } from 'react-icons/lia';
 
 const DeleteIdeaAlert = ({ idea }) => {
@@ -10,7 +11,7 @@ const DeleteIdeaAlert = ({ idea }) => {
 
     const handleDelete = async () => {
         const result = await deleteIdea(idea._id);
-
+        
         if (result.deletedCount > 0) {
             toast.success('Delete an idea successfully')
             router.refresh();

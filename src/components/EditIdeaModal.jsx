@@ -15,15 +15,11 @@ const EditIdeaModal = ({ idea }) => {
         shortDescription,
         detailedDescription,
         category,
-        tags,
         imageURL,
         estimatedBudget,
         targetAudience,
         problemStatement,
         proposedSolution,
-        creatorName,
-        creatorImage,
-        createdAt
     } = idea;
 
     const handleEdit = async (e) => {

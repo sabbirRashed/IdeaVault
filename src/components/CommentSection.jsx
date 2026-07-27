@@ -1,30 +1,29 @@
 'use client'
 import { postComment } from '@/lib/action';
 import { authClient } from '@/lib/auth-client';
-import { getAllComments } from '@/lib/data';
 import { Avatar, Button, Input } from '@heroui/react';
-import { div } from 'framer-motion/client';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import { LiaTrashAlt } from 'react-icons/lia';
 import { LuDot } from 'react-icons/lu';
+import CommentEditModal from './CommentEditModal';
 
 const CommentSection = ({ allComments, idea }) => {
-
-
     const [comment, setComment] = useState('');
+    const router = useRouter()
 
     const { data } = authClient.useSession();
     const user = data?.user;
+    const { _id, ideaTitle, imageURL } = idea;
 
     const handleComment = async (e) => {
         e.preventDefault();
 
-        const {_id, ideaTitle,} = idea;
-        
         const commentAndInfo = {
             ideaId: _id,
             ideaTitle,
+            ideaImage: imageURL,
             userId: user?.id,
             userName: user?.name,
             userImage: user?.image,
@@ -33,6 +32,7 @@ const CommentSection = ({ allComments, idea }) => {
         const result = await postComment(commentAndInfo, _id);
 
         if (result.acknowledged) {
+            router.refresh()
             toast.success('successfully added a comment');
             setComment('')
 
@@ -42,9 +42,10 @@ const CommentSection = ({ allComments, idea }) => {
         }
 
     }
+
     return (
-        <div className='mt-20 md:mt-30 border border-(--color-border)'>
-            <div className='p-4 bg-(--color-primary)/10 space-y-4'>
+        <div className='mt-20 md:mt-30 '>
+            <div className='p-4 bg-(--color-secondary)/10 space-y-4'>
                 <h3 className='text-xl font-medium font-sora'>Comments ({allComments.length})</h3>
 
                 {/* comment input area */}
@@ -63,19 +64,19 @@ const CommentSection = ({ allComments, idea }) => {
                                 value={comment}
                                 onChange={(e) => { setComment(e.target.value) }}
                                 placeholder="Add your comment"
-                                className={'shadow-none w-full py-1 px-4 bg-white rounded-xl focus:outline-(--color-primary)/80'} />
+                                className={'shadow-none w-full py-2 px-4 bg-white rounded-xl focus:outline-(--color-primary)/80'} />
 
                             <div className='flex justify-end gap-3 mt-2'>
                                 {
                                     comment && <>
-                                        <Button onClick={() => { setComment('') }} size='sm' variant='light' className={'text-xs border-(--color-danger) text-(--color-danger) hover:bg-(--color-danger)/20 transition-colors duration-300'}>Cancel</Button>
+                                        <Button onClick={()=> {setComment('')}} type='reset' size='sm' className={'text-xs bg-danger/10 hover:bg-danger/20 text-danger transition-colors duration-300'}>Cancel</Button>
                                         <Button type='submit' size='sm' className={'text-xs btn-primary transition-colors duration-300'}>Comment</Button>
                                     </>
                                 }
 
                             </div>
                         </form>
-                    </div>: <div>
+                    </div> : <div>
                         <h2>Please login to share your thougths!</h2>
                     </div>
                 }
@@ -83,11 +84,11 @@ const CommentSection = ({ allComments, idea }) => {
             </div>
 
             {/* all comments */}
-            <div className='grid grid-cols-1 p-4 space-y-6'>
+            <div className='grid grid-cols-1 p-4 space-y-6 idea-card'>
                 {
                     allComments.length > 0 ? <>
                         {
-                            allComments.map(comment => <div key={comment._id} className=' flex items-start gap-2 md:gap-4 '>
+                            allComments.map(comment => <div key={comment._id} className=' flex items-start gap-2 md:gap-4 border p-4 rounded-2xl'>
                                 <div>
                                     <Avatar className=''>
                                         <Avatar.Image
@@ -97,17 +98,30 @@ const CommentSection = ({ allComments, idea }) => {
                                     </Avatar>
                                 </div>
 
-                                <div className='space-y-1'>
-                                    <div className='flex items-center gap-1 text-xs'>
-                                        <h2 className='text-sm font-bold '>{comment.userName}</h2>
-                                        <LuDot />
-                                        <p>{new Date(comment.createdAt).toLocaleDateString("en-GB", {
-                                            day: "numeric",
-                                            month: "long",
-                                            year: "numeric"
-                                        })}</p>
+                                <div className='flex-1 flex justify-between items-start'>
+                                    <div className='space-y-1'>
+                                        <div className='flex justify-between items-start'>
+                                            <div className='flex flex-col md:flex-row items-start md:items-center gap-1 text-xs'>
+                                                <h2 className='text-sm font-bold '>{comment.userName}</h2>
+                                                <LuDot className='hidden md:inline-block' />
+                                                <p className='text-(--color-text)/60'>{new Date(comment.createdAt).toLocaleDateString("en-GB", {
+                                                    day: "numeric",
+                                                    month: "long",
+                                                    year: "numeric"
+                                                })}</p>
+                                            </div>
+                                        </div>
+                                        <p className='text-sm md:text-base'>{comment.comment}</p>
                                     </div>
-                                    <p>{comment.comment}</p>
+
+                                    {
+                                        comment.userId === user?.id && <div className='flex items-center gap-2'>
+                                            <CommentEditModal comment={comment} ideaId={_id}/>
+                                            <Button size='sm' isIconOnly className={'w-7 h-7 bg-danger/20 text-danger hover:bg-danger/30 transition-colors duration-300'}>
+                                                <LiaTrashAlt className='w-4 h-4 ' />
+                                            </Button>
+                                        </div>
+                                    }
                                 </div>
                             </div>)
                         }
