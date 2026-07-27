@@ -6,7 +6,7 @@ import React from 'react';
 import toast from 'react-hot-toast';
 import { AiOutlineEdit } from 'react-icons/ai';
 
-const CommentEditModal = ({ comment, ideaId }) => {
+const CommentEditModal = ({ comment }) => {
 
     const router = useRouter()
     const handleEdit = async (e) => {
@@ -17,7 +17,7 @@ const CommentEditModal = ({ comment, ideaId }) => {
         const modifiedComm = Object.fromEntries(formData.entries());
         console.log(modifiedComm);
 
-        const result = await updateComment(modifiedComm, comment._id, ideaId);
+        const result = await updateComment(modifiedComm, comment._id, comment.ideaId);
     
         if(result.modifiedCount >0){
             router.refresh()
