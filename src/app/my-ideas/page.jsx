@@ -17,9 +17,11 @@ const MyIdeasPage = async () => {
     const { user } = await auth.api.getSession({
         headers: await headers()
     })
+    const { token } = await auth.api.getToken({
+        headers: await headers(),
+    })
+    const myIdeas = await getIdeaByUserId(user.id, token);
 
-    const myIdeas = await getIdeaByUserId(user.id);
- 
     return (
         <div className='min-h-[80vh] w-11/12 max-w-7xl mx-auto py-20 md:py-30'>
             <h2 className='text-2xl md:text-4xl font-bold font-sora'>My Ideas ({myIdeas.length})</h2>

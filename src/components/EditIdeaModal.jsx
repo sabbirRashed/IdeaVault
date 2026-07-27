@@ -1,5 +1,6 @@
 "use client"
 import { updateIdea } from '@/lib/action';
+import { authClient } from '@/lib/auth-client';
 import { Button, FieldError, Form, Input, Label, ListBox, Modal, TextArea, TextField, Select, Surface } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import React from 'react';
@@ -28,13 +29,14 @@ const EditIdeaModal = ({ idea }) => {
         const form = e.currentTarget;
         const formData = new FormData(form);
         const modifiedIdeaData = Object.fromEntries(formData.entries());
+        const { data } = await authClient.token()
 
-        const result = await updateIdea(_id, modifiedIdeaData);
-        
-        if(result.modifiedCount >0){
+        const result = await updateIdea(_id, modifiedIdeaData, data?.token);
+
+        if (result.modifiedCount > 0) {
             router.refresh()
             toast.success('Update idea successfully')
-        }else{
+        } else {
             toast.error('Something went wrong!')
         }
     }

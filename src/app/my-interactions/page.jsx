@@ -17,7 +17,11 @@ const MyInterActions = async () => {
         headers: await headers()
     });
 
-    const myInterActions = await getCommentsByUserId(user.id);
+    const { token } = await auth.api.getToken({
+        headers: await headers(),
+    })
+
+    const myInterActions = await getCommentsByUserId(user.id, token);
     console.log('my-comments:', myInterActions);
 
 
@@ -33,7 +37,7 @@ const MyInterActions = async () => {
                         {
                             myInterActions.map(comment => {
                                 return <MyInteractionCard key={comment._id}
-                                commentData={comment} />
+                                    commentData={comment} />
                             })
                         }
                     </> : <>

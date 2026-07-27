@@ -1,6 +1,8 @@
 import CommentSection from '@/components/CommentSection';
+import { auth } from '@/lib/auth';
 import { getAllComments, getIdeaById } from '@/lib/data';
 import { Avatar, Chip } from '@heroui/react';
+import { headers } from 'next/headers';
 import Image from 'next/image';
 import React from 'react';
 import { BiCategory } from 'react-icons/bi';
@@ -19,10 +21,13 @@ export const metadata = {
 
 const IdeaDetails = async ({ params }) => {
     const { id } = await params;
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
 
-    const allComments = await getAllComments(id);
 
-    const idea = await getIdeaById(id);
+    const allComments = await getAllComments(id, token);
+    const idea = await getIdeaById(id, token);
     const {
         ideaTitle,
         shortDescription,

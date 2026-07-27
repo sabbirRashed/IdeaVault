@@ -1,5 +1,6 @@
 'use client'
 import { deleteIdea } from '@/lib/action';
+import { authClient } from '@/lib/auth-client';
 import { AlertDialog, Button } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import React from 'react';
@@ -10,8 +11,9 @@ const DeleteIdeaAlert = ({ idea }) => {
     const router = useRouter();
 
     const handleDelete = async () => {
-        const result = await deleteIdea(idea._id);
-        
+        const { data } = await authClient.token()
+        const result = await deleteIdea(idea._id, data?.token);
+
         if (result.deletedCount > 0) {
             toast.success('Delete an idea successfully')
             router.refresh();

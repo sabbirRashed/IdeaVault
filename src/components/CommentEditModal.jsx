@@ -1,5 +1,6 @@
 'use client'
 import { updateComment } from '@/lib/action';
+import { authClient } from '@/lib/auth-client';
 import { Button, FieldError, Form, Label, Modal, Surface, TextArea, TextField } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import React from 'react';
@@ -15,9 +16,9 @@ const CommentEditModal = ({ comment }) => {
         const form = e.currentTarget;
         const formData = new FormData(form);
         const modifiedComm = Object.fromEntries(formData.entries());
-        console.log(modifiedComm);
+         const { data } = await authClient.token()
 
-        const result = await updateComment(modifiedComm, comment._id, comment.ideaId);
+        const result = await updateComment(modifiedComm, comment._id, comment.ideaId, data?.token);
     
         if(result.modifiedCount >0){
             router.refresh()

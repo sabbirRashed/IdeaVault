@@ -30,7 +30,8 @@ const CommentSection = ({ allComments, idea }) => {
             userImage: user?.image,
             comment: comment,
         }
-        const result = await postComment(commentAndInfo, _id);
+        const { data } = await authClient.token()
+        const result = await postComment(commentAndInfo, _id, data?.token);
 
         if (result.acknowledged) {
             router.refresh()

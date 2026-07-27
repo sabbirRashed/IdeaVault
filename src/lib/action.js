@@ -3,10 +3,11 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-export const postIdea = async (idea) => {
+export const postIdea = async (idea, token) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas`, {
         method: "POST",
         headers: {
+            authorization: `Bearer ${token}`,
             "content-type": "application/json",
         },
         body: JSON.stringify(idea),
@@ -17,10 +18,11 @@ export const postIdea = async (idea) => {
     return result;
 }
 
-export const updateIdea = async (ideaId, modifiedIdea) => {
+export const updateIdea = async (ideaId, modifiedIdea, token) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas/${ideaId}`, {
         method: "PATCH",
         headers: {
+            authorization: `Bearer ${token}`,
             "content-type": "application/json",
         },
         body: JSON.stringify(modifiedIdea),
@@ -31,10 +33,11 @@ export const updateIdea = async (ideaId, modifiedIdea) => {
     return result;
 }
 
-export const deleteIdea = async (ideaId) => {
+export const deleteIdea = async (ideaId, token) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas/${ideaId}`, {
         method: 'DELETE',
         headers: {
+            authorization: `Bearer ${token}`,
             'content-type': 'application/json',
         }
     })
@@ -45,10 +48,11 @@ export const deleteIdea = async (ideaId) => {
 }
 
 // comments api
-export const postComment = async (comment, ideaId) => {
+export const postComment = async (comment, ideaId, token) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comments`, {
         method: "POST",
         headers: {
+            authorization: `Bearer ${token}`,
             "content-type": "application/json",
         },
         body: JSON.stringify(comment)
@@ -59,10 +63,11 @@ export const postComment = async (comment, ideaId) => {
     return result;
 };
 
-export const updateComment = async (modifiedComment, commentId, ideaId) => {
+export const updateComment = async (modifiedComment, commentId, ideaId, token) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comments/${commentId}`, {
         method: "PATCH",
         headers: {
+            authorization: `Bearer ${token}`,
             "content-type": "application/json",
         },
         body: JSON.stringify(modifiedComment)
@@ -73,10 +78,11 @@ export const updateComment = async (modifiedComment, commentId, ideaId) => {
     return result;
 }
 
-export const deleteComment = async (commentId, ideaId) => {
+export const deleteComment = async (commentId, ideaId, token) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comments/${commentId}`, {
         method: "DELETE",
         headers: {
+            authorization: `Bearer ${token}`,
             "content-type": "application/json",
         }
     })

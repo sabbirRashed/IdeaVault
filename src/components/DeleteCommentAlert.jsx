@@ -1,6 +1,7 @@
 'use client'
 
 import { deleteComment } from "@/lib/action";
+import { authClient } from "@/lib/auth-client";
 import { AlertDialog, Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
@@ -11,8 +12,8 @@ const DeleteCommentAlert = ({ comment }) => {
     const router = useRouter();
 
     const handleDelete = async () => {
-
-        const result = await deleteComment(comment._id, comment.ideaId);
+        const { data } = await authClient.token()
+        const result = await deleteComment(comment._id, comment.ideaId, data?.token);
 
         if (result.deletedCount > 0) {
             toast.success('Successfully delet a comment')

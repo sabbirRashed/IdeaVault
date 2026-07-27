@@ -24,6 +24,7 @@ const AddIdeaCard = () => {
             , problemStatement, proposedSolution, shortDescription, detailedDescription
 
         } = newIdeaData
+        const { data } = await authClient.token()
 
         const result = await postIdea({
             creatorId: user?.id,
@@ -38,7 +39,7 @@ const AddIdeaCard = () => {
             proposedSolution,
             shortDescription,
             detailedDescription
-        })
+        }, data?.token)
         if (result.acknowledged) {
             toast.success('Successfully added a new post');
             form.reset()
