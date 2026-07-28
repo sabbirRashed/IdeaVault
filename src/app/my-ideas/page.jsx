@@ -25,7 +25,7 @@ const MyIdeasPage = async () => {
     return (
         <div className='min-h-[80vh] w-11/12 max-w-7xl mx-auto py-20 md:py-30'>
             <h2 className='text-2xl md:text-4xl font-bold font-sora'>My Ideas ({myIdeas.length})</h2>
-            <p className='max-w-xl mt-2 text-sm md:text-base text-(--color-text-muted)'>Manage everything you&apose;ve shared with the SparkNest community — edit, update, or remove anytime.</p>
+            <p className='max-w-xl mt-2 text-sm md:text-base text-(--color-text-muted)'>Manage everything you've shared with the SparkNest community — edit, update, or remove anytime.</p>
 
             {/* my idea container*/}
             <div className='border mt-10 md:mt-15  p-4 idea-card space-y-4'>
@@ -46,7 +46,7 @@ const MyIdeasPage = async () => {
                             </h2>
 
                             <p className="text-(--color-text-muted) max-w-md mb-6">
-                                You haven&apose;t shared any ideas yet. Start by creating your first idea and inspire the community.
+                                You haven't shared any ideas yet. Start by creating your first idea and inspire the community.
                             </p>
 
                             <Link href="/add-ideas">

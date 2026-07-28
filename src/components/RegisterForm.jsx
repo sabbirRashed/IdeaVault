@@ -33,6 +33,7 @@ const RegisterForm = () => {
         }
         if (data?.user) {
             toast.success('Account created successfully')
+            router.refresh()
             router.push('/')
         }
 
@@ -95,7 +96,7 @@ const RegisterForm = () => {
                     isRequired
                     minLength={6}
                     name="password"
-                    type="password"
+                    type={isClosed? "password": "text"}
                     validate={(value) => {
                         if (value.length < 6) {
                             return "Password must be at least 6 characters";

@@ -5,6 +5,7 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import toast from "react-hot-toast";
 import { FiMoon } from "react-icons/fi";
 import { IoSunnyOutline } from "react-icons/io5";
 import { SiUnacademy } from "react-icons/si";
@@ -21,7 +22,14 @@ const Navbar = () => {
     const isDark = resolvedTheme === "dark";
 
     const handleLogout = async()=>{
-        await authClient.signOut()
+        const {data, error} = await authClient.signOut()
+        
+        if(data.success){
+            toast.success('Logout successfully')
+        }
+        if(error){
+            toast.error(error.message)
+        }
     }
 
     const publicLinks = [

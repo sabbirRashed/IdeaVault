@@ -22,13 +22,11 @@ const MyInterActions = async () => {
     })
 
     const myInterActions = await getCommentsByUserId(user.id, token);
-    console.log('my-comments:', myInterActions);
-
-
+  
     return (
         <div className='min-h-[80vh] w-11/12 max-w-7xl mx-auto py-20 md:py-30'>
             <h2 className='text-2xl md:text-4xl font-bold font-sora'>My Interactions ({myInterActions.length})</h2>
-            <p className='max-w-xl mt-2 text-sm md:text-base text-(--color-text-muted)'>Every idea you&apose;ve weighed in on, all in one place.</p>
+            <p className='max-w-xl mt-2 text-sm md:text-base text-(--color-text-muted)'>Every idea you've weighed in on, all in one place.</p>
 
             {/* interactions container */}
             <div className='min-h-20 max-w-3xl mx-auto mt-10 md:mt-15 space-y-4'>
@@ -51,7 +49,7 @@ const MyInterActions = async () => {
                             </h2>
 
                             <p className="text-(--color-text-muted) max-w-md mb-6">
-                                Comment on an idea to start the conversation — your feedback helps shape someone&apose;s next big thing.
+                                Comment on an idea to start the conversation — your feedback helps shape someone's next big thing.
                             </p>
 
                             <Link href="/ideas">

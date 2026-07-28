@@ -102,7 +102,7 @@ const AddIdeaCard = () => {
                         </Select.Trigger>
                         <Select.Popover>
                             <ListBox>
-                                <ListBox.Item id="Beach" textValue="Tech">
+                                <ListBox.Item id="Tech" textValue="Tech">
                                     Tech
                                     <ListBox.ItemIndicator />
                                 </ListBox.Item>

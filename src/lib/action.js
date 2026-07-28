@@ -1,7 +1,6 @@
 "use server"
 
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache"
 
 export const postIdea = async (idea, token) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas`, {
