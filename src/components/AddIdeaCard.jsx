@@ -126,19 +126,19 @@ const AddIdeaCard = () => {
                                     Sports
                                     <ListBox.ItemIndicator />
                                 </ListBox.Item>
-                                <ListBox.Item id="food" textValue="Food">
+                                <ListBox.Item id="Food" textValue="Food">
                                     Food
                                     <ListBox.ItemIndicator />
                                 </ListBox.Item>
-                                <ListBox.Item id="transportation" textValue="Transportation">
+                                <ListBox.Item id="Transportation" textValue="Transportation">
                                     Transportation
                                     <ListBox.ItemIndicator />
                                 </ListBox.Item>
-                                <ListBox.Item id="business" textValue="Business">
+                                <ListBox.Item id="Business" textValue="Business">
                                     Business
                                     <ListBox.ItemIndicator />
                                 </ListBox.Item>
-                                <ListBox.Item id="environment" textValue="Environment">
+                                <ListBox.Item id="Environment" textValue="Environment">
                                     Environment
                                     <ListBox.ItemIndicator />
                                 </ListBox.Item>

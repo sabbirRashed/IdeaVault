@@ -23,7 +23,7 @@ const Navbar = () => {
 
     const handleLogout = async()=>{
         const {data, error} = await authClient.signOut()
-        
+
         if(data.success){
             toast.success('Logout successfully')
         }
@@ -48,7 +48,7 @@ const Navbar = () => {
 
             {/* Basic */}
             <nav className="w-11/12 max-w-7xl mx-auto ">
-                <header className="flex h-16 items-center justify-between px-6">
+                <header className="flex h-16 items-center justify-between px-0 md:px-6">
                     <div className="flex items-center ">
                         <Image
                         src={'/assets/sparkNestLogo.png'}

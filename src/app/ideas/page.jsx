@@ -1,6 +1,9 @@
 import IdeaCard from '@/components/IdeaCard';
+import SearchFilterBar from '@/components/SearchFilterBar';
 import { getAllIdeas } from '@/lib/data';
+import { Input, ListBox, Select } from '@heroui/react';
 import React from 'react';
+import { IoSearchOutline } from 'react-icons/io5';
 
 export const metadata = {
     title: "Explore Ideas || SparkNest",
@@ -15,8 +18,10 @@ const AllIdeasPage = async () => {
             <h2 className='text-2xl md:text-4xl font-bold font-sora'>Explore innovative ideas</h2>
             <p className='max-w-xl mt-2 text-sm md:text-base text-(--color-text-muted)'>Browse ideas from innovators around the world, share your thoughts, and help great concepts grow.</p>
 
+            <SearchFilterBar/>
+
             {/* idea cards */}
-            <div className='mt-10 md:mt-15 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-10'>
+            <div className='mt-6 md:mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-10'>
                 {
                     ideas.map(idea => <IdeaCard key={idea._id} idea={idea}></IdeaCard>)
                 }
