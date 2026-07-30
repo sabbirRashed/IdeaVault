@@ -10,8 +10,10 @@ export const metadata = {
     description: "Browse startup ideas across tech, health, education, and more. Search, filter, and find the next big thing before it happens.",
 };
 
-const AllIdeasPage = async () => {
-    const ideas = await getAllIdeas();
+const AllIdeasPage = async ({searchParmas}) => {
+    const query = new URLSearchParams(searchParmas).toString()
+
+    const ideas = await getAllIdeas(query);
 
     return (
         <div className='w-11/12 max-w-7xl mx-auto py-20 md:py-30'>
@@ -21,7 +23,7 @@ const AllIdeasPage = async () => {
             <SearchFilterBar/>
 
             {/* idea cards */}
-            <div className='mt-6 md:mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-10'>
+            <div className='mt-6 md:mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-10'>
                 {
                     ideas.map(idea => <IdeaCard key={idea._id} idea={idea}></IdeaCard>)
                 }

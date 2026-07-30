@@ -1,18 +1,68 @@
-import { Input, ListBox , Select} from '@heroui/react';
-import React from 'react';
+'use client'
+import { Input, ListBox, Select } from '@heroui/react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import React, { useState } from 'react';
 import { IoSearchOutline } from 'react-icons/io5';
 
 const SearchFilterBar = () => {
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const [search, setSearch] = useState(searchParams.get('search') || '');
+    const [category, setCategory] = useState(searchParams.get('category') || 'All');
+    const [sort, setSort] = useState(searchParams.get('sort') || 'new');
+    console.log(search);
+
+
+    const updateFilter = ({ search, category, sort }) => {
+        const params = new URLSearchParams(searchParams.toString());
+
+        if (search) {
+            params.set("search", search)
+        }else{params.delete('search')}
+
+        if (category && category !== "All") {
+            params.set('category', category)
+        }else{params.delete('category')}
+
+        if (sort) {
+            params.set('sort', sort)
+        }
+
+        router.push(`/ideas?${params.toString()}`)
+        console.log('new params:', params);
+
+    }
+
+    const handleSearch = () => {
+        updateFilter({ search, category, sort });
+    };
+
+    const handleCategory = (key) => {
+        setCategory(key);
+        updateFilter({ search, category: key, sort });
+    };
+
+    const handleSort = (key) => {
+        setSort(key);
+        updateFilter({ search, category, sort: key });
+    };
+
     return (
         <div className='flex flex-col md:flex-row justify-between  gap-2 md:gap-4 mt-15'>
             <div className='flex-1 relative'>
                 <Input
+                    value={search}
+                    onChange={(e) => { setSearch(e.target.value) }}
                     placeholder='Search idea by category'
-                    className={'w-full py-3 border border-(--color-primary)/20 focus:border-(--color-primary)/60 shadow-none focus:ring-0 text-xs md:text-base'} />
-                <span className='absolute top-3.5 right-4'> <IoSearchOutline /></span>
+                    className={'w-full h-full py-3 border border-(--color-primary)/20 focus:border-(--color-primary)/60 shadow-none focus:ring-0 text-xs md:text-base'} />
+                <span
+                    onClick={handleSearch}
+                    className='absolute top-1/2 -translate-y-1/2 right-4 p-2 rounded-full bg-(--color-primary)/60'> <IoSearchOutline /></span>
             </div>
             <div className='grid grid-cols-12 items-center flex-1 gap-2  md:gap-4'>
                 <Select
+                    value={category}
+                    onChange={handleCategory}
                     name="category"
                     className="w-full col-span-7 "
                     placeholder="Filtere idea by category"
@@ -73,6 +123,8 @@ const SearchFilterBar = () => {
                 </Select>
 
                 <Select
+                    value={sort}
+                    onChange={handleSort}
                     name="category"
                     className="w-full col-span-5 "
                     placeholder="Newest First"

@@ -1,5 +1,7 @@
-export const getAllIdeas = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas`);
+export const getAllIdeas = async (query) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas?${query}`,{
+        cache: 'no-store'
+    });
     const result = await res.json();
     return result;
 }
