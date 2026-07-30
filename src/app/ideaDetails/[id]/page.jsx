@@ -52,7 +52,7 @@ const IdeaDetails = async ({ params }) => {
 
 
     return (
-        <div className='w-11/12 max-w-7xl mx-auto py-20 md:py-30'>
+        <div className='w-11/12 max-w-7xl mx-auto py-15 md:py-30'>
             <div className='relative overflow-hidden'>
                 <Image
                     src={imageURL}

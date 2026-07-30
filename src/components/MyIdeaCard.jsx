@@ -45,7 +45,7 @@ const MyIdeaCard = ({ idea }) => {
             </div>
 
             {/* card content */}
-            <div className='md:flex-3 space-y-4'>
+            <div className='md:flex-3 space-y-4 w-full'>
                 <div className=''>
                     <div className='flex justify-between items-center'>
                         <h2 className='text-xl md:text-2xl font-medium font-sora text-foreground/70'>{ideaTitle}</h2>
@@ -61,7 +61,7 @@ const MyIdeaCard = ({ idea }) => {
                 <p className='text-foreground/70 line-clamp-2'>{detailedDescription}</p>
 
                 <div className='flex justify-between items-center'>
-                    <h3><span className='font-medium'>createdAt: </span>{createdDate}</h3>
+                    <h3 className='text-sm'><span className='font-medium'>createdAt: </span>{createdDate}</h3>
                     <Link href={`/ideaDetails/${_id}`}>
                         <Button size='sm' className={'text-xs btn-primary duration-300 transition-colors'}>
                             View Details <FaArrowRightLong />

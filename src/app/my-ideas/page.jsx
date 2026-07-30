@@ -3,6 +3,7 @@ import { auth } from '@/lib/auth';
 import { getIdeaByUserId } from '@/lib/data';
 import { Button, Link } from '@heroui/react';
 import { headers } from 'next/headers';
+import Image from 'next/image';
 import React from 'react';
 import { FcIdea } from 'react-icons/fc';
 
@@ -23,12 +24,12 @@ const MyIdeasPage = async () => {
     const myIdeas = await getIdeaByUserId(user.id, token);
 
     return (
-        <div className='min-h-[80vh] w-11/12 max-w-7xl mx-auto py-20 md:py-30'>
+        <div className='min-h-[80vh] w-11/12 max-w-7xl mx-auto py-15 md:py-30'>
             <h2 className='text-2xl md:text-4xl font-bold font-sora'>My Ideas ({myIdeas.length})</h2>
             <p className='max-w-xl mt-2 text-sm md:text-base text-(--color-text-muted)'>Manage everything you've shared with the SparkNest community — edit, update, or remove anytime.</p>
 
             {/* my idea container*/}
-            <div className='border mt-10 md:mt-15  p-4 idea-card space-y-4'>
+            <div className='md:border mt-10 md:mt-15  md:p-4 md:idea-card space-y-4'>
                 {
                     myIdeas.length > 0 ? <>
                         {
@@ -38,7 +39,11 @@ const MyIdeasPage = async () => {
                     </> : <>
                         <div className="border border-(--color-border) bg-(--color-bg) rounded-2xl p-10 text-center flex flex-col items-center justify-center">
                             <div className="w-16 h-16 rounded-full bg-(--color-secondary)/20 flex items-center justify-center mb-4">
-                                <FcIdea size={32} />
+                                <Image
+                                    src={'/assets/updateLogo.png'}
+                                    alt='Idea-icon'
+                                    width={40}
+                                    height={40}></Image>
                             </div>
 
                             <h2 className="text-2xl font-semibold mb-2">
