@@ -10,8 +10,9 @@ export const metadata = {
     description: "Browse startup ideas across tech, health, education, and more. Search, filter, and find the next big thing before it happens.",
 };
 
-const AllIdeasPage = async ({searchParmas}) => {
-    const query = new URLSearchParams(searchParmas).toString()
+const AllIdeasPage = async ({ searchParams }) => {
+   const search_params = await searchParams
+    const query = new URLSearchParams(search_params).toString()
 
     const ideas = await getAllIdeas(query);
 
@@ -20,7 +21,7 @@ const AllIdeasPage = async ({searchParmas}) => {
             <h2 className='text-2xl md:text-4xl font-bold font-sora'>Explore innovative ideas</h2>
             <p className='max-w-xl mt-2 text-sm md:text-base text-(--color-text-muted)'>Browse ideas from innovators around the world, share your thoughts, and help great concepts grow.</p>
 
-            <SearchFilterBar/>
+            <SearchFilterBar />
 
             {/* idea cards */}
             <div className='mt-6 md:mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-10'>

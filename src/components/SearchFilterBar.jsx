@@ -10,7 +10,6 @@ const SearchFilterBar = () => {
     const [search, setSearch] = useState(searchParams.get('search') || '');
     const [category, setCategory] = useState(searchParams.get('category') || 'All');
     const [sort, setSort] = useState(searchParams.get('sort') || 'new');
-    console.log(search);
 
 
     const updateFilter = ({ search, category, sort }) => {
@@ -18,23 +17,29 @@ const SearchFilterBar = () => {
 
         if (search) {
             params.set("search", search)
-        }else{params.delete('search')}
+        } else { params.delete('search') }
 
         if (category && category !== "All") {
             params.set('category', category)
-        }else{params.delete('category')}
+        } else { params.delete('category') }
 
         if (sort) {
             params.set('sort', sort)
         }
 
         router.push(`/ideas?${params.toString()}`)
-        console.log('new params:', params);
+        console.log("fromSEar:", params);
 
     }
 
     const handleSearch = () => {
         updateFilter({ search, category, sort });
+    };
+
+    const handleSearchKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            updateFilter({ search, category, sort });
+        }
     };
 
     const handleCategory = (key) => {
@@ -53,6 +58,7 @@ const SearchFilterBar = () => {
                 <Input
                     value={search}
                     onChange={(e) => { setSearch(e.target.value) }}
+                    onKeyDown={handleSearchKeyDown}
                     placeholder='Search idea by category'
                     className={'w-full h-full py-3 border border-(--color-primary)/20 focus:border-(--color-primary)/60 shadow-none focus:ring-0 text-xs md:text-base'} />
                 <span
@@ -106,7 +112,7 @@ const SearchFilterBar = () => {
                                 Food
                                 <ListBox.ItemIndicator />
                             </ListBox.Item>
-                            <ListBox.Item id="Fransportation" textValue="Transportation">
+                            <ListBox.Item id="Transportation" textValue="Transportation">
                                 Transportation
                                 <ListBox.ItemIndicator />
                             </ListBox.Item>
