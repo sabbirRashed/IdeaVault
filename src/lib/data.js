@@ -6,6 +6,12 @@ export const getAllIdeas = async (query) => {
     return result;
 }
 
+export const trendingIdeas = async()=>{
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/trendingIdeas`);
+    const result = await res.json();
+    return result;
+}
+
 export const getIdeaById = async (id, token) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideaDetails/${id}`, {
         headers: {
