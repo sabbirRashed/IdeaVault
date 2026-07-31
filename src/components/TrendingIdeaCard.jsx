@@ -1,0 +1,58 @@
+import { Avatar, Button, Chip } from '@heroui/react';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+import { FaFire, FaFireAlt } from 'react-icons/fa';
+import { FaArrowRightLong } from 'react-icons/fa6';
+
+const TrendingIdeaCard = ({ trendingIdea }) => {
+
+    const { _id, ideaTitle, shortDescription, category, tags, imageURL, creatorName, creatorImage
+    } = trendingIdea
+
+    return (
+        <div className=' space-y-6 border idea-card p-4 rounded-2xl shadow hover:shadow-xl hover:shadow-amber-600/20 hover:-translate-y-1 transition-all duration-300'>
+            <div className='relative w-full h-40'>
+                <Image src={imageURL}
+                    alt={ideaTitle}
+                    fill
+                    sizes='100vh'
+                    className=' object-cover'></Image>
+                <Chip className='bg-(--color-secondary)/90 text-white absolute top-2 left-2'>{category?.toUpperCase()}</Chip>
+                <span className='absolute top-2 right-2 text-(--color-primary)/80'><FaFire size={18} /></span>
+            </div>
+
+            <div className=''>
+                <h3 className='text-lg md:text-xl font-semibold font-sora '>{ideaTitle}</h3>
+                <p className='text-sm text-(--color-text-muted) line-clamp-1 mt-1'>{shortDescription}</p>
+
+
+                <div className='mt-2 space-x-2'>
+                    {
+                        tags && tags.slice(0, 3).map((item, ind) => <Chip key={ind} className='bg-(--color-primary)/10 text-(--color-primary)'>{item}</Chip>)
+                    }
+                </div>
+
+                <div className='flex justify-between items-center mt-2'>
+                    <div className='flex items-center gap-1'>
+                        <Avatar size="sm" className='w-6 h-6'>
+                            <Avatar.Image
+                                src={creatorImage}
+                                alt={creatorName} />
+                            <Avatar.Fallback className='text-xs'>{creatorName && creatorName[0]}</Avatar.Fallback>
+                        </Avatar>
+                        <span className='text-sm font-medium'>{creatorName}</span>
+                    </div>
+
+                    <Link href={`/ideaDetails/${_id}`}>
+                        <Button size='sm' className={'text-xs btn-primary duration-300 transition-colors'}>
+                            View Details <FaArrowRightLong />
+                        </Button>
+                    </Link>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default TrendingIdeaCard;

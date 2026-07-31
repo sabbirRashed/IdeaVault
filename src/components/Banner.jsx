@@ -46,7 +46,7 @@ const variants = {
     exit: { opacity: 0, y: -20 },
 };
 
-export default function Hero() {
+const Banner = () => {
     const [index, setIndex] = useState(0);
 
     useEffect(() => {
@@ -115,3 +115,5 @@ export default function Hero() {
         </section>
     );
 }
+
+export default Banner

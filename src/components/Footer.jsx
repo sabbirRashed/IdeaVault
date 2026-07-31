@@ -13,8 +13,9 @@ const Footer = () => {
                             <Image
                                 src={'/assets/sparkNestLogo.png'}
                                 alt="logo"
-                                width={100}
-                                height={100}></Image>
+                                width={80}
+                                height={80}
+                                className='w-auto'></Image>
                             <p className="font-bold text-4xl text-(--color-secondary)"><span className="text-(--color-primary)">Spark</span>Nest</p>
                         </div>
                         <p className='text-white/50'>Discover, share, and grow innovative ideas with a community of creators and problem solvers.</p>

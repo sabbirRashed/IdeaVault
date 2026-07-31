@@ -53,8 +53,9 @@ const Navbar = () => {
                         <Image
                         src={'/assets/sparkNestLogo.png'}
                         alt="logo"
-                        width={60}
-                        height={60}></Image>
+                        width={50}
+                        height={50}
+                        className="w-auto"></Image>
                         <p className="font-bold text-lg text-(--color-secondary)"><span className="text-(--color-primary)">Spark</span>Nest</p>
                     </div>
 
