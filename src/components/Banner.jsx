@@ -78,7 +78,7 @@ const Banner = () => {
                         >
                             {/* Text and hero btn*/}
                             <div className="text-left">
-                                <h1 className="text-3xl font-bold text-white">{slide.title}</h1>
+                                <h1 className="text-3xl font-bold font-sora text-white">{slide.title}</h1>
                                 <p className="mt-3 text-white/80">{slide.subtitle}</p>
                                 <Link href={slide.path}>
                                     <Button
