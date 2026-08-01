@@ -5,6 +5,7 @@ import { Button } from "@heroui/react";
 import Link from "next/link";
 import { FaArrowRightLong, FaComments, FaHandshake, FaLightbulb, FaUserPlus } from "react-icons/fa6";
 import { IoMdTrendingUp } from "react-icons/io";
+import { MdRocketLaunch } from "react-icons/md";
 
 export default async function Home() {
 
@@ -39,7 +40,8 @@ export default async function Home() {
       {/* workflow section */}
       <div className="w-11/12 max-w-7xl mx-auto my-15 md:my-30 py-6 md:py-15 px-4  rounded-lg">
         <div className="text-center">
-          <h2 className="text-xl md:text-3xl font-semibold font-sora">How It Works</h2>
+          <span className="flex justify-center items-center max-w-fit mx-auto gap-1 text-xs font-semibold bg-(--color-primary)/10 text-(--color-primary) py-1 px-3 rounded-full tracking-wider "><MdRocketLaunch />GET STARTED</span>
+          <h2 className="text-xl md:text-3xl font-semibold font-sora mt-2">How It Works</h2>
           <p className="text-sm md:text-base text-(--color-text)/60 mt-2 max-w-80 md:max-w-[420px] mx-auto">From spark to reality - here's how SparkNest brings your ideas to life</p>
         </div>
 
@@ -84,6 +86,22 @@ export default async function Home() {
             <div className="absolute -top-8 -left-8  w-20 h-20 rounded-full bg-(--color-secondary)/10  "></div>
             <span className="absolute top-2 left-2 text-xs sm:text-sm text-(--color-secondary)">04</span>
           </div>
+        </div>
+      </div>
+
+      {/* CTA banner section */}
+      <div className="w-11/12 max-w-7xl mx-auto relative overflow-hidden bg-linear-to-br from-teal-800 via-teal-800 to-slate-900  my-15 md:my-30 py-12 md:py-20 rounded-3xl">
+        <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full bg-white/30 blur-2xl"></div>
+        <div className="absolute -bottom-12 -right-12 w-52 h-52 rounded-full bg-white/20 blur-2xl"></div>
+
+        <div className=" text-center">
+          <h2 className="text-2xl md:text-4xl font-bold font-sora text-white">Have an Idea? Share It Now</h2>
+          <p className="text-sm md:text-lg text-white/80 max-w-xl mx-auto mt-3">Don't let it stay in your head - share it with a community ready to support, refine, and help it grow.</p>
+          <Link href={'/add-ideas'}>
+            <Button className={'bg-white hover:bg-white/90 transition-colors duration-300 text-(--color-secondary) font-semibold px-6 md:px-8 mt-6 md:mt-8'}>
+              Post Your Idea <FaArrowRightLong />
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
