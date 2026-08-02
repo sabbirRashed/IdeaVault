@@ -8,29 +8,18 @@ import { usePathname } from "next/navigation";
 import toast from "react-hot-toast";
 import { FiMoon } from "react-icons/fi";
 import { IoSunnyOutline } from "react-icons/io5";
-import { SiUnacademy } from "react-icons/si";
+import ProfileDropDown from "./ProfileDropDown";
 
 
 const Navbar = () => {
 
-    const {data, isPending} =  authClient.useSession();
+    const { data, isPending } = authClient.useSession();
     const user = data?.user;
 
     const pathName = usePathname();
     const { resolvedTheme, setTheme } = useTheme();
 
     const isDark = resolvedTheme === "dark";
-
-    const handleLogout = async()=>{
-        const {data, error} = await authClient.signOut()
-
-        if(data.success){
-            toast.success('Logout successfully')
-        }
-        if(error){
-            toast.error(error.message)
-        }
-    }
 
     const publicLinks = [
         { to: "/", label: "Home" },
@@ -44,18 +33,18 @@ const Navbar = () => {
     ];
 
     return (
-        <div className=" border-b bg-background/80 backdrop-blur-md sticky top-0 z-10">
+        <div className=" border-b bg-background/80 backdrop-blur-md sticky top-0 z-50">
 
             {/* Basic */}
             <nav className="w-11/12 max-w-7xl mx-auto ">
                 <header className="flex h-16 items-center justify-between px-0 md:px-6">
                     <div className="flex items-center ">
                         <Image
-                        src={'/assets/sparkNestLogo.png'}
-                        alt="logo"
-                        width={40}
-                        height={40}
-                        className="w-auto"></Image>
+                            src={'/assets/sparkNestLogo.png'}
+                            alt="logo"
+                            width={40}
+                            height={40}
+                            className="w-auto"></Image>
                         <p className="font-bold text-lg text-(--color-secondary)"><span className="text-(--color-primary)">Spark</span>Nest</p>
                     </div>
 
@@ -84,7 +73,7 @@ const Navbar = () => {
                     <div className="flex items-center gap-2 md:gap-4">
                         <button
                             onClick={() => { setTheme(isDark ? "light" : "dark") }}
-                            
+
                         >
                             {
                                 isDark ?
@@ -95,20 +84,7 @@ const Navbar = () => {
                         </button>
                         {
                             user ? <>
-
-                                <Avatar size="sm">
-                                    <Avatar.Image 
-                                    src={user?.image} 
-                                    alt={user?.name} />
-                                    <Avatar.Fallback>{user?.name[0]}</Avatar.Fallback>
-                                </Avatar>
-                                <Button
-                                    size="sm"
-                                    className={'bg-(--color-danger)'}
-                                onPress={handleLogout}
-                                >
-                                    Log out
-                                </Button>
+                                <ProfileDropDown user={user} />
                             </> : <>
                                 <Link href={'/login'}>
                                     <Button

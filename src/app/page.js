@@ -15,30 +15,9 @@ export default async function Home() {
     <div className="">
       <Banner />
 
-      {/* ternding idea section */}
-      <div className="w-11/12 max-w-7xl mx-auto my-15 md:my-30 py-6 md:py-15 px-4 bg-(--color-primary)/5 rounded-lg">
-        <div className="text-center ">
-          <h2 className="text-xl md:text-3xl font-semibold font-sora  flex justify-center items-center gap-2"><IoMdTrendingUp size={40} className="text-(--color-primary)" />Trending Ideas </h2>
-          <p className="text-sm md:text-base text-(--color-text)/60 mt-2">See what the community is buzzing about right now</p>
-        </div>
-
-        {/* trending card */}
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
-          {
-            trendingIdeas.map(idea => <TrendingIdeaCard key={idea._id} trendingIdea={idea} />)
-          }
-        </div>
-        <Link href={`/ideas`}
-          className="flex justify-center items-center mt-6 md:mt-10">
-          <Button size='sm' variant="outline" className={'text-xs border border-(--color-primary) hover:bg-(--color-primary)  text-(--color-primary) hover:text-white duration-300 transition-colors'}>
-            View All <FaArrowRightLong />
-          </Button>
-        </Link>
-      </div>
-
 
       {/* workflow section */}
-      <div className="w-11/12 max-w-7xl mx-auto my-15 md:my-30 py-6 md:py-15 px-4  rounded-lg">
+      <div className="w-11/12 max-w-7xl mx-auto my-20 md:my-30 px-4 rounded-lg">
         <div className="text-center">
           <span className="flex justify-center items-center max-w-fit mx-auto gap-1 text-xs font-semibold bg-(--color-primary)/10 text-(--color-primary) py-1 px-3 rounded-full tracking-wider "><MdRocketLaunch />GET STARTED</span>
           <h2 className="text-xl md:text-3xl font-semibold font-sora mt-2">How It Works</h2>
@@ -89,10 +68,31 @@ export default async function Home() {
         </div>
       </div>
 
+
+      {/* ternding idea section */}
+      <div className="w-11/12 max-w-7xl mx-auto my-20 md:my-30 py-6 md:py-15 px-4 bg-(--color-primary)/5 rounded-lg">
+        <div className="text-center ">
+          <h2 className="text-xl md:text-3xl font-semibold font-sora  flex justify-center items-center gap-2"><IoMdTrendingUp size={40} className="text-(--color-primary)" />Trending Ideas </h2>
+          <p className="text-sm md:text-base text-(--color-text)/60 mt-2">See what the community is buzzing about right now</p>
+        </div>
+
+        {/* trending card */}
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
+          {
+            trendingIdeas.map(idea => <TrendingIdeaCard key={idea._id} trendingIdea={idea} />)
+          }
+        </div>
+        <Link href={`/ideas`}
+          className="flex justify-center items-center mt-6 md:mt-10">
+          <Button size='sm' variant="outline" className={'text-xs border border-(--color-primary) hover:bg-(--color-primary)  text-(--color-primary) hover:text-white duration-300 transition-colors'}>
+            View All <FaArrowRightLong />
+          </Button>
+        </Link>
+      </div>
+
+
       {/* CTA banner section */}
-      <div className="w-11/12 max-w-7xl mx-auto relative overflow-hidden bg-linear-to-br from-teal-800 via-teal-800 to-slate-900  my-15 md:my-30 py-12 md:py-20 rounded-3xl">
-        <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full bg-white/30 blur-2xl"></div>
-        <div className="absolute -bottom-12 -right-12 w-52 h-52 rounded-full bg-white/20 blur-2xl"></div>
+      <div className="w-11/12 max-w-7xl mx-auto relative overflow-hidden bg-linear-to-br from-teal-800 via-teal-800 to-slate-900  my-20 md:my-30 py-12 md:py-20 rounded-3xl">
 
         <div className=" text-center">
           <h2 className="text-2xl md:text-4xl font-bold font-sora text-white">Have an Idea? Share It Now</h2>
