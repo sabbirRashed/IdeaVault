@@ -37,7 +37,7 @@ const ProfileDropDown = ({ user }) => {
             </Button>
 
             {
-                isOpen && <div className='absolute right-0 mt-3 border border-(--color-text)/10 bg-white rounded-2xl shadow-xl z-10 w-64 p-4 animate-in fade-in slide-in-from-top-2 transition-all duration-300 space-y-2'>
+                isOpen && <div className='absolute right-0 mt-3 border border-(--color-text)/10 idea-card rounded-2xl shadow-xl z-10 w-64 p-4 animate-in fade-in slide-in-from-top-2 transition-all duration-300 space-y-2'>
                     <div className='flex flex-col justify-center items-center text-center'>
                         <Avatar >
                             <Avatar.Image
@@ -50,27 +50,27 @@ const ProfileDropDown = ({ user }) => {
                             <p className='text-xs text-(--color-text)/60 truncate'>{user?.email}</p>
                         </div>
                     </div>
-                    <Separator />
+                    <Separator className={`bg-(--color-border)`} />
 
-                    <ul>
-                        <li >
-                            <Link href={'/'} className='flex items-center gap-2'><FaUser size={14} />My Profile</Link>
+                    <ul className='text-sm font-medium text-(--color-text)/90 space-y-1'>
+                        <li onClick={()=> setIsOpen(false)}>
+                            <Link href={'/'} className='flex items-center gap-3 hover:bg-(--color-secondary)/10 py-1 rounded-xl '><FaUser size={14} />My Profile</Link>
                         </li>
-                        <li>
-                            <Link href={'/edit-profile'} className='flex items-center gap-2'><FaEdit size={14} />Edit Profile</Link>
+                        <li onClick={()=> setIsOpen(false)}>
+                            <Link href={'/edit-profile'} className='flex items-center gap-3 hover:bg-(--color-secondary)/10 py-1 rounded-xl'><FaEdit size={14} />Edit Profile</Link>
                         </li>
-                        <li >
-                            <Link href={'/my-ideas'} className='flex items-center gap-2'><FaLightbulb size={14} />My Ideas</Link>
+                        <li onClick={()=> setIsOpen(false)}>
+                            <Link href={'/my-ideas'} className='flex items-center gap-3 hover:bg-(--color-secondary)/10 py-1 rounded-xl'><FaLightbulb size={14} />My Ideas</Link>
                         </li>
-                        <li >
-                            <Link href={'/my-interactions'} className='flex items-center gap-2'><FaComments size={14} />My Interactions</Link>
+                        <li onClick={()=> setIsOpen(false)}>
+                            <Link href={'/my-interactions'} className='flex items-center gap-3 hover:bg-(--color-secondary)/10 py-1 rounded-xl'><FaComments size={14} />My Interactions</Link>
                         </li>
                     </ul>
 
-                    <Separator className='' />
+                    <Separator className='bg-(--color-border)' />
                     <Button
                         size="sm"
-                        className={'bg-(--color-danger) text-xs'}
+                        className={'bg-(--color-danger) hover:bg-(--color-danger)/90 transition-colors duration-300 text-xs'}
                         onPress={handleLogout}
                     >
                         Log out
