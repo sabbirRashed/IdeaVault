@@ -76,9 +76,11 @@ const ProfilePage = () => {
                         </div>
                     </div>
 
-                    <Button className="btn-primary transition-colors duration-300 px-5">
-                        Edit Profile <FaPen size={12} />
-                    </Button>
+                    <Link href={'/profile/edit-Profile'}>
+                        <Button className="btn-primary transition-colors duration-300 px-5">
+                            Edit Profile <FaPen size={12} />
+                        </Button>
+                    </Link>
                 </div>
 
                 <p className="text-sm text-(--color-text)/70 mt-4 max-w-2xl">
