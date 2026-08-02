@@ -96,7 +96,7 @@ const RegisterForm = () => {
                     isRequired
                     minLength={6}
                     name="password"
-                    type={isClosed? "password": "text"}
+                    type={isClosed ? "password" : "text"}
                     validate={(value) => {
                         if (value.length < 6) {
                             return "Password must be at least 6 characters";

@@ -27,9 +27,22 @@ export const auth = betterAuth({
             strategy: 'jwt',
             maxAge: 10 * 24 * 60 * 60
         }
-    }, 
+    },
 
     plugins: [
         jwt()
-    ]
+    ],
+    user: {
+        additionalFields: {
+            title: {
+                type: 'string',
+            },
+            bio: {
+                type: 'string',
+            },
+            location: {
+                type: 'string',
+            }
+        }
+    }
 });

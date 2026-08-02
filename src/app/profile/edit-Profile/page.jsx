@@ -3,6 +3,7 @@ import { authClient } from '@/lib/auth-client';
 import { Button, Input, Label, TextArea } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import { FaArrowLeft } from 'react-icons/fa6';
 
 const EditProfilePage = () => {
@@ -19,14 +20,31 @@ const EditProfilePage = () => {
         const form = e.currentTarget;
         const formData = new FormData(form);
         const editedUserData = Object.fromEntries(formData.entries());
-        const { name, title, bio, location, email,  imageUrl } = editedUserData;
+        const { name, title, bio, location, imgUrl } = editedUserData;
+
         try {
-            
+            const { data, error } = await authClient.updateUser({
+                name,
+                title,
+                image: imgUrl,
+                bio,
+                location,
+            })
+
+            if (error) {
+                toast.error(error.message)
+                return
+            }
+            if (data?.status) {
+                toast.success('Successfully update your account')
+                router.refresh()
+                router.push('/profile')
+            }
+
         } finally {
             setSaving(false);
         }
     };
-
 
     return (
         <div className='w-11/12 max-w-2xl mx-auto my-10 md:my-16'>
@@ -38,7 +56,9 @@ const EditProfilePage = () => {
             <h1 className='text-2xl md:text-3xl font-bold font-sora mt-6'>Edit Profile</h1>
 
             <div className='mt-8 '>
-                <form className='space-y-5 idea-card p-6 md:p-8 rounded-2xl'>
+                <form
+                    onSubmit={handleSubmit}
+                    className='space-y-5 idea-card p-6 md:p-8 rounded-2xl'>
                     <div className="flex flex-col gap-1.5">
                         <Label
                             className='text-(--color-text)/80'
@@ -52,7 +72,7 @@ const EditProfilePage = () => {
                             placeholder="Enter your full name"
                             type="text"
                             name='name'
-                            defaultValue={user?.name || "User name"} />
+                            defaultValue={user?.name} />
                     </div>
                     <div className="flex flex-col gap-1">
                         <Label
@@ -65,7 +85,8 @@ const EditProfilePage = () => {
                             id="image"
                             placeholder="Paste your new image link"
                             type="url"
-                            name='imgUrl' />
+                            name='imgUrl'
+                            defaultValue={user?.image} />
                     </div>
                     <div className="flex flex-col gap-1.5">
                         <Label
@@ -93,7 +114,7 @@ const EditProfilePage = () => {
                             id="bio"
                             defaultValue={user?.bio || ''}
                             placeholder='Write about yourself'
-                            cols={1} rows={2} />
+                            cols={1} rows={3} />
                     </div>
                     <div className="flex flex-col gap-1.5">
                         <Label
@@ -107,6 +128,7 @@ const EditProfilePage = () => {
                             placeholder="Enter your email"
                             type="email"
                             name='email'
+                            readOnly
                             defaultValue={user?.email || ''} />
                     </div>
                     <div className="flex flex-col gap-1.5">
@@ -135,10 +157,10 @@ const EditProfilePage = () => {
                         </Button>
                         <Button
                             type="submit"
-                            // disabled={saving}
+                            disabled={saving}
                             className="btn-primary px-6 py-2.5 rounded-xl text-sm font-medium disabled:opacity-50"
                         >
-                            {/* {saving ? 'Saving...' : 'Save Changes'} */}
+                            {saving ? 'Saving...' : 'Save Changes'}
                         </Button>
                     </div>
                 </form>
