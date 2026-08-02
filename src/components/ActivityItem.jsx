@@ -1,5 +1,4 @@
 import { formatDistanceToNow } from 'date-fns';
-import { p } from 'framer-motion/client';
 import React from 'react';
 import { FaFire } from 'react-icons/fa6';
 

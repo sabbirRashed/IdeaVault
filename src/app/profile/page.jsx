@@ -4,6 +4,7 @@ import MyIdeaCard from '@/components/MyIdeaCard';
 import { authClient } from '@/lib/auth-client';
 import { getCommentsByUserId, getIdeaByUserId } from '@/lib/data';
 import { Avatar, Button } from '@heroui/react';
+import { format } from 'date-fns';
 import { div } from 'framer-motion/client';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -48,7 +49,8 @@ const ProfilePage = () => {
     }, [user, activeTab])
 
     const allActivity = [...myIdeas, ...interActions].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-   
+    const createdAccount = user?.createdAt ? format(new Date(user?.createdAt), "MMM yyyy") : "_";
+
 
 
 
@@ -82,6 +84,18 @@ const ProfilePage = () => {
                 <p className="text-sm text-(--color-text)/70 mt-4 max-w-2xl">
                     {user?.bio || 'No bio added yet.'}
                 </p>
+            </div>
+
+            <div className='flex items-center gap-6 md:gap-10 px-4 md:px-8 mt-6 pb-6 border-b border-b-(--color-text)/10'>
+                <div className='text-center'>
+                    <p className='text-lg md:text-xl font-bold font-sora text-(--color-primary)'>{myIdeas.length}</p>
+                    <p className='text-xs md:text-sm text-(--color-text)/60 mt-0.5'>Idea Post</p>
+                </div>
+
+                <div className='text-center'>
+                    <p className='text-lg md:text-xl font-bold font-sora text-(--color-primary)'>{createdAccount}</p>
+                    <p className='text-xs md:text-sm text-(--color-text)/60 mt-0.5'>Member Since</p>
+                </div>
             </div>
 
             {/* tabs */}
