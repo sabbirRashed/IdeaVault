@@ -9,6 +9,7 @@ import { div } from 'framer-motion/client';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import { FaHistory } from 'react-icons/fa';
 import { FaLightbulb, FaPen } from 'react-icons/fa6';
 import { GiAutoRepair } from 'react-icons/gi';
 
@@ -55,7 +56,7 @@ const ProfilePage = () => {
 
 
     return (
-        <div className="w-11/12 max-w-6xl mx-auto mt-10">
+        <div className="w-11/12 max-w-6xl mx-auto mt-10 mb-15">
             {/* banner */}
             <div className="h-40 md:h-56 rounded-3xl bg-gradient-to-br from-(--color-primary) via-orange-400 to-(--color-secondary) relative overflow-hidden">
             </div>
@@ -178,7 +179,23 @@ const ProfilePage = () => {
                                     allActivity.map(item => <ActivityItem key={item._id} item={item} />)
                                 }
                             </> : <>
+                                <div className="rounded-2xl p-10 text-center flex flex-col items-center justify-center">
 
+                                    <FaHistory size={32} className='mx-auto text-(--color-primary)' />
+                                    <h2 className="text-2xl text-(--color-text)/80 font-semibold mt-4">
+                                        No Activity Yet
+                                    </h2>
+
+                                    <p className="text-(--color-text-muted) max-w-md mb-6 mt-2">
+                                        Your recent actions — posting ideas, comments — will show up here once you get started.
+                                    </p>
+
+                                    <Link href="/ideas">
+                                        <Button className="btn-primary">
+                                            Explore Ideas
+                                        </Button>
+                                    </Link>
+                                </div>
                             </>
                         }
                     </div>
