@@ -1,5 +1,6 @@
 'use client'
 import ActivityItem from '@/components/ActivityItem';
+import LoadingSpinner from '@/components/LoadingSpiner';
 import MyIdeaCard from '@/components/MyIdeaCard';
 import { authClient } from '@/lib/auth-client';
 import { getCommentsByUserId, getIdeaByUserId } from '@/lib/data';
@@ -123,7 +124,9 @@ const ProfilePage = () => {
             {/* container of tabs item */}
             <div className='px-4 md:px-8 my-6'>
                 {
-                    activeTab === 'my-ideas' && <div className=' grid grid-cols-1 gap-4'>
+                    loading ? <>
+                       <LoadingSpinner/>
+                    </> : activeTab === 'my-ideas' && <div className=' grid grid-cols-1 gap-4'>
                         {
                             myIdeas.length > 0 ? <>
                                 {
