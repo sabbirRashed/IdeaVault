@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { FcIdea } from 'react-icons/fc';
+import LoadingSpinner from '../loading';
 
 export const metadata = {
     title: "Explore Ideas || SparkNest",

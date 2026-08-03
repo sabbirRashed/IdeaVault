@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import toast from 'react-hot-toast';
-import { FiMoon } from 'react-icons/fi';
+import { FiMenu, FiMoon } from 'react-icons/fi';
 import { IoMdTrendingUp } from 'react-icons/io';
 import { IoHomeOutline, IoLogOutOutline, IoSunnyOutline } from 'react-icons/io5';
 import { TbActivity, TbBulb, TbHome, TbNotebook, TbSquareRoundedPlus } from 'react-icons/tb';
@@ -33,12 +33,14 @@ const MenuDrawer = () => {
     }
 
     return (
-        <Drawer>
-            <Button variant="secondary">Open filters</Button>
+        <Drawer isOpen={state.isOpen} onOpenChange={state.setOpen}>
+            <Button
+
+                variant="ghost" onClick={() => state.open()}><FiMenu />Menu</Button>
             <Drawer.Backdrop variant="blur">
                 <Drawer.Content placement="right">
                     <Drawer.Dialog
-                        // onClick={()=>state.close()}
+                        onClick={() => state.close()}
                         className="border-l border-border/80 bg-surface p-0">
                         <Drawer.CloseTrigger />
                         <Drawer.Header >
@@ -71,14 +73,18 @@ const MenuDrawer = () => {
                         <Drawer.Body >
                             <div className='px-4 py-2'>
                                 <ul className=' text-sm font-medium '>
-                                    <li className=' hover:bg-(--color-primary)/10 rounded-2xl hover:text-(--color-primary) px-5'><Link href={'/'} className='flex items-center gap-3 py-4 '><TbHome size={18} />Home</Link></li>
+                                    <li className=' hover:bg-(--color-primary)/10 rounded-2xl hover:text-(--color-primary) px-5'>
+                                        <Link href={'/'} className='flex items-center gap-3 py-4 '>
+                                            <TbHome size={18} />Home
+                                        </Link>
+                                    </li>
                                     <li className=' hover:bg-(--color-primary)/10 rounded-2xl hover:text-(--color-primary) px-5'><Link href={'/ideas'} className='flex items-center gap-3 py-4 '><TbBulb size={18} />Ideas</Link></li>
                                     <li className=' hover:bg-(--color-primary)/10 rounded-2xl hover:text-(--color-primary) px-5'><Link href={'/add-ideas'} className='flex items-center gap-3 py-4 '><TbSquareRoundedPlus size={18} /> Add-Idea</Link></li>
                                 </ul>
                                 {
                                     user && <ul className=' text-sm font-medium'>
-                                        <li className=' hover:bg-(--color-primary)/10 rounded-2xl hover:text-(--color-primary) px-5'><Link href={'/ideas'} className='flex items-center gap-3 py-4 '><TbNotebook size={18} /> My Ideas</Link></li>
-                                        <li className=' hover:bg-(--color-primary)/10 rounded-2xl hover:text-(--color-primary) px-5'><Link href={'/add-ideas'} className='flex items-center gap-3 py-4 '><TbActivity size={18} /> My Interactions</Link></li>
+                                        <li className=' hover:bg-(--color-primary)/10 rounded-2xl hover:text-(--color-primary) px-5'><Link href={'/my-ideas'} className='flex items-center gap-3 py-4 '><TbNotebook size={18} /> My Ideas</Link></li>
+                                        <li className=' hover:bg-(--color-primary)/10 rounded-2xl hover:text-(--color-primary) px-5'><Link href={'/my-interactions'} className='flex items-center gap-3 py-4 '><TbActivity size={18} /> My Interactions</Link></li>
                                     </ul>
                                 }
                             </div>

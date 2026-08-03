@@ -36,7 +36,7 @@ const Navbar = () => {
     return (
         <div className=" border-b bg-background/80 backdrop-blur-md sticky top-0 z-50">
 
-           
+
             <nav className="w-11/12 max-w-7xl mx-auto ">
                 <header className="flex h-16 items-center justify-between px-0 md:px-6">
                     <div className="flex items-center ">
@@ -107,7 +107,10 @@ const Navbar = () => {
                         }
                     </div>
 
-                    <MenuDrawer/>
+                    {/* small device view */}
+                    <div className="md:hidden">
+                        <MenuDrawer />
+                    </div>
                 </header>
             </nav>
         </div>
