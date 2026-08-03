@@ -1,15 +1,21 @@
 "use client"
 import { authClient } from '@/lib/auth-client';
 import { Avatar, Button, Drawer, Separator, useOverlayState } from '@heroui/react';
+import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { FiMoon } from 'react-icons/fi';
 import { IoMdTrendingUp } from 'react-icons/io';
-import { IoHomeOutline } from 'react-icons/io5';
+import { IoHomeOutline, IoSunnyOutline } from 'react-icons/io5';
 import { TbActivity, TbBulb, TbHome, TbNotebook, TbSquareRoundedPlus } from 'react-icons/tb';
 
 const MenuDrawer = () => {
     const state = useOverlayState({ defaultOpen: false })
+    const { resolvedTheme, setTheme } = useTheme();
+
+    const isDark = resolvedTheme === "dark";
+    console.log(isDark, ':menu');
 
     const { data, isPending } = authClient.useSession();
     const user = data?.user;
@@ -63,13 +69,34 @@ const MenuDrawer = () => {
                                 }
                             </div>
                             <Separator className=' border-b border-(--color-border) mt-3' />
+
+                            <div className='flex justify-between items-center px-5 py-4'>
+                                <h2 className='font-medium'>Theme</h2>
+                                <div className='ring-1 ring-(--color-text)/30 p-0.5 rounded-full'>
+
+                                    <Button
+                                        isIconOnly
+                                        size='sm'
+                                        variant='light'
+                                        onClick={()=> setTheme("light")}
+                                        className={` ${isDark? " text-(--color-text)/20": "bg-gray-200"}`}>
+                                        <IoSunnyOutline className=" h-5 w-5 cursor-pointer" />
+                                    </Button>
+
+                                    <Button
+                                        isIconOnly size='sm'
+                                        variant='light'
+                                        onClick={()=>setTheme("dark")}
+                                        className={`${isDark? "bg-white/10": "text-(--color-text)/20"}`}>
+                                        <FiMoon className=" h-5 w-5 cursor-pointer" />
+                                    </Button>
+
+                                </div>
+                            </div>
                         </Drawer.Body>
 
                         <Drawer.Footer>
-                            <Button slot="close" variant="secondary">
-                                Cancel
-                            </Button>
-                            <Button slot="close">Apply</Button>
+
                         </Drawer.Footer>
                     </Drawer.Dialog>
                 </Drawer.Content>
