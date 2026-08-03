@@ -57,7 +57,7 @@ const ProfileDropDown = ({ user }) => {
                             <Link href={'/profile'} className='flex items-center gap-3 hover:bg-(--color-secondary)/10 py-1 rounded-xl '><FaUser size={14} />My Profile</Link>
                         </li>
                         <li onClick={()=> setIsOpen(false)}>
-                            <Link href={'/edit-profile'} className='flex items-center gap-3 hover:bg-(--color-secondary)/10 py-1 rounded-xl'><FaEdit size={14} />Edit Profile</Link>
+                            <Link href={'/profile/edit-Profile'} className='flex items-center gap-3 hover:bg-(--color-secondary)/10 py-1 rounded-xl'><FaEdit size={14} />Edit Profile</Link>
                         </li>
                         <li onClick={()=> setIsOpen(false)}>
                             <Link href={'/my-ideas'} className='flex items-center gap-3 hover:bg-(--color-secondary)/10 py-1 rounded-xl'><FaLightbulb size={14} />My Ideas</Link>

@@ -48,7 +48,10 @@ const EditProfilePage = () => {
 
     return (
         <div className='w-11/12 max-w-2xl mx-auto my-10 md:my-16'>
-            <Button variant='ghost' className={'flex items-center gap-2 text-(--color-text)/60 hover:text-(--color-primary) transition-colors duration-300'}>
+            <Button
+                onClick={() => router.back()}
+                variant='ghost'
+                className={'flex items-center gap-2 text-(--color-text)/60 hover:text-(--color-primary) transition-colors duration-300'}>
                 <FaArrowLeft size={12} />
                 Back to Profile
             </Button>
@@ -150,7 +153,7 @@ const EditProfilePage = () => {
                     <div className="flex justify-end gap-3">
                         <Button
                             variant='ghost'
-                            // onClick={() => router.back()}
+                            onClick={() => router.back()}
                             className="px-5 py-2.5 rounded-xl text-(--color-text)/70 hover:bg-(--color-text)/5 transition-colors"
                         >
                             Cancel
