@@ -2,8 +2,8 @@
 
 > A platform to share, discover, and discuss startup ideas — built for founders, dreamers, and builders who want early feedback before writing a single line of code.
 
-**Live Demo:** [https://ideavault-seven-beta.vercel.app/]
-**Backend Repo:** [https://github.com/sabbirRashed/ideaVault-server.git]
+ **Live Demo:** https://ideavault-seven-beta.vercel.app/ <br/>
+ **Backend Repo:** https://github.com/sabbirRashed/ideaVault-server.git
 
 ---
 
@@ -63,22 +63,48 @@ SparkNest is a full-stack idea-sharing platform where users can post startup con
 
 ```
 sparknest/
-├── app/                  # Next.js App Router routes
-│   ├── (auth)/           # Login, register
-│   ├── ideas/             # Browse & idea detail pages
-│   ├── add-ideas/        # Create idea flow
-|   |
-│   ├── profile/           # Profile & edit profile
-│   └── layout.jsx
-├── components/
-│   ├── ui/                # Reusable UI (spinners, skeletons, drawer)
-│   ├── cards/              # TrendingIdeaCard, MyIdeaCard
-│   ├── navigation/          # MenuDrawer, Navbar
-│   └── ...
-├── lib/                  # auth-client, utils, db connection
-├── public/
-│   └── assets/            # Logo, icons, images
-└── README.md
+├── src/
+│   ├── app/
+│   │   ├── (authentication)/     # Login & register routes
+│   │   ├── add-ideas/            # Create idea flow
+│   │   ├── api/                  # API route handlers
+│   │   ├── ideaDetails/          # Single idea detail view
+│   │   ├── ideas/                # Explore / browse all ideas
+│   │   ├── my-ideas/             # User's own submitted ideas
+│   │   ├── my-interactions/      # User's comments & activity
+│   │   ├── profile/
+│   │   │   └── edit-Profile/     # Edit profile flow
+│   │   ├── page.jsx              # Home page
+│   │   ├── layout.js
+│   │   ├── loading.jsx
+│   │   ├── not-found.jsx
+│   │   ├── provider.jsx
+│   │   └── globals.css
+│   │
+│   └── components/
+│       ├── ActivityItem.jsx
+│       ├── AddIdeaCard.jsx
+│       ├── Banner.jsx
+│       ├── CommentEditModal.jsx
+│       ├── CommentSection.jsx
+│       ├── DeleteCommentAlert.jsx
+│       ├── DeleteIdeaAlert.jsx
+│       ├── EditIdeaModal.jsx
+│       ├── Footer.jsx
+│       ├── IdeaCard.jsx
+│       ├── LoadingSpiner.jsx
+│       ├── LoginForm.jsx
+│       ├── MenuDrawer.jsx
+│       ├── MyIdeaCard.jsx
+│       ├── MyInteractionCard.jsx
+│       ├── Navbar.jsx
+│       ├── ProfileDropDown.jsx
+│       ├── RegisterForm.jsx
+│       └── SearchFilterBar.jsx
+│
+├── screenshots/
+├── README.md
+└── package.json
 ```
 
 ---
