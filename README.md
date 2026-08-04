@@ -118,8 +118,8 @@ sparknest/
 ### Installation
 
 ```bash
-git clone https://github.com/your-username/sparknest.git
-cd sparknest
+git clone https://github.com/your-username/SparkNest.git
+cd SparkNest
 npm install
 ```
 
