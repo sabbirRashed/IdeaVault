@@ -17,7 +17,7 @@ SparkNest is a full-stack idea-sharing platform where users can post startup con
 
 | Home Page | Trending Ideas |
 |-----------|----------------|
-| ![Home](./screenshots/home.png) | ![Trending](./screenshots/exploreIdea.png) |
+| ![Home](./screenshots/home.png) | ![Explore Ideas](./screenshots/exploreIdea.png) |
 
 | Login | Profile Page |
 |-------|--------------|
