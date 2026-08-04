@@ -3,6 +3,7 @@
 > A platform to share, discover, and discuss startup ideas — built for founders, dreamers, and builders who want early feedback before writing a single line of code.
 
 **Live Demo:** [https://ideavault-seven-beta.vercel.app/]
+**Backend Repo:[https://github.com/sabbirRashed/ideaVault-server.git]
 
 ---
 
@@ -11,6 +12,17 @@
 SparkNest is a full-stack idea-sharing platform where users can post startup concepts, explore trending ideas, and engage through comments and interactions. Built with a modern MERN-based stack, it focuses on clean UX, theme-aware design, and a smooth authenticated experience from signup to profile management.
 
 ---
+
+## 📸 Screenshots
+
+| Home Page | Trending Ideas |
+|-----------|----------------|
+| ![Home](./screenshots/home.png) | ![Trending](./screenshots/exploreIdea.png) |
+
+| Login | Profile Page |
+|-------|--------------|
+| ![Login](./screenshots/login.png) | ![Profile](./screenshots/profile.png) |
+
 
 ## 🚀 Features
 
