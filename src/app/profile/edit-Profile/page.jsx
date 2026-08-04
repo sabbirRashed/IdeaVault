@@ -26,7 +26,7 @@ const EditProfilePage = () => {
             const { data, error } = await authClient.updateUser({
                 name,
                 title,
-                image: imgUrl,
+                image: imgUrl || user?.image,
                 bio,
                 location,
             })
@@ -89,7 +89,7 @@ const EditProfilePage = () => {
                             placeholder="Paste your new image link"
                             type="url"
                             name='imgUrl'
-                            defaultValue={user?.image} />
+                            />
                     </div>
                     <div className="flex flex-col gap-1.5">
                         <Label

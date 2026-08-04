@@ -1,6 +1,7 @@
 import { authClient } from '@/lib/auth-client';
 import { Avatar, Button, Separator } from '@heroui/react';
 import Link from 'next/link';
+import { redirect, useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaEdit } from 'react-icons/fa';
@@ -9,12 +10,14 @@ import { FaChevronDown, FaComments, FaLightbulb, FaUser } from 'react-icons/fa6'
 
 const ProfileDropDown = ({ user }) => {
     const [isOpen, setIsOpen] = useState(false)
+    const router = useRouter()
 
     const handleLogout = async () => {
         const { data, error } = await authClient.signOut()
 
         if (data.success) {
             toast.success('Logout successfully')
+            redirect('/')
         }
         if (error) {
             toast.error(error.message)

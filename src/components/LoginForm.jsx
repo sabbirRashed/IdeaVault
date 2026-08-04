@@ -38,6 +38,7 @@ const LoginForm = () => {
     const handleGoogleSignIn = async () => {
         await authClient.signIn.social({
             provider: "google",
+            callbackURL: redirect,
         });
     }
 

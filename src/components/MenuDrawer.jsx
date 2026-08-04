@@ -16,7 +16,6 @@ const MenuDrawer = () => {
     const { resolvedTheme, setTheme } = useTheme();
 
     const isDark = resolvedTheme === "dark";
-    console.log(isDark, ':menu');
 
     const { data, isPending } = authClient.useSession();
     const user = data?.user;

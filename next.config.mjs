@@ -6,12 +6,12 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'images.unsplash.com',
+        hostname: '**',
         pathname: "/**"
       },
       {
-        protocol: 'https',
-        hostname: 'encrypted-tbn0.gstatic.com',
+        protocol: 'http',
+        hostname: '**',
         pathname: "/**"
       },
     ]

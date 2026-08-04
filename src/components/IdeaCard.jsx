@@ -9,12 +9,13 @@ const IdeaCard = ({ idea }) => {
     
     return (
         <div className=' space-y-6 border idea-card p-4 rounded-2xl shadow hover:shadow-xl hover:shadow-amber-600/20 hover:-translate-y-1 transition-all duration-300'>
-            <div className='relative'>
+            <div className='relative w-full h-40'>
                 <Image src={imageURL}
                     alt='image'
-                    width={160}
-                    height={160}
-                    className='w-full h-40 object-cover'></Image>
+                    fill
+                   sizes='100vh'
+                   loading='eager'
+                    className=' object-cover'></Image>
                 <Chip className='bg-(--color-secondary)/90 text-white absolute top-2 left-2'>{category.toUpperCase()}</Chip>
             </div>
 

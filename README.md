@@ -38,7 +38,7 @@ SparkNest is a full-stack idea-sharing platform where users can post startup con
 
 **Backend**
 - [Node.js](https://nodejs.org/) + [Express.js](https://expressjs.com/)
-- [MongoDB](https://www.mongodb.com/) + Mongoose
+- [MongoDB](https://www.mongodb.com/)
 - JWT authentication
 
 **Fonts**
@@ -54,7 +54,8 @@ sparknest/
 ├── app/                  # Next.js App Router routes
 │   ├── (auth)/           # Login, register
 │   ├── ideas/             # Browse & idea detail pages
-│   ├── add-ideas/         # Create idea flow
+│   ├── add-ideas/        # Create idea flow
+|   |
 │   ├── profile/           # Profile & edit profile
 │   └── layout.jsx
 ├── components/
@@ -113,12 +114,6 @@ Contributions, issues, and feature requests are welcome.
 3. Commit your changes (`git commit -m 'Add amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
 ---
 

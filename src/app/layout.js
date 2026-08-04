@@ -19,6 +19,9 @@ const inter = Inter({
 export const metadata = {
   title: "SparkNest — Share & Discover Startup Ideas",
   description: "Share your startup idea, explore what others are building, and get real feedback from a community that validates ideas together.",
+  icons: {
+    icon: '/assets/updateLogo.png'
+  }
 };
 
 export default function RootLayout({ children }) {

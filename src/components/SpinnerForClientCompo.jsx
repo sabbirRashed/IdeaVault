@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import React from 'react';
 
-const LoadingSpinner = () => {
+const SpinnerForClientCompo = () => {
     return (
-        <div className='flex justify-center items-center min-h-[80vh]'>
+        <div className='flex justify-center items-center'>
             <div className='relative rounded-full p-3 md:p-4 '>
 
                 <div className="absolute inset-0 rounded-full border-2 border-(--color-primary)/40 animate-ping" />
@@ -19,4 +19,4 @@ const LoadingSpinner = () => {
     );
 };
 
-export default LoadingSpinner;
+export default SpinnerForClientCompo;

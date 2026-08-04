@@ -2,6 +2,7 @@
 import ActivityItem from '@/components/ActivityItem';
 import LoadingSpinner from '@/components/LoadingSpiner';
 import MyIdeaCard from '@/components/MyIdeaCard';
+import SpinnerForClientCompo from '@/components/SpinnerForClientCompo';
 import { authClient } from '@/lib/auth-client';
 import { getCommentsByUserId, getIdeaByUserId } from '@/lib/data';
 import { Avatar, Button } from '@heroui/react';
@@ -125,7 +126,7 @@ const ProfilePage = () => {
             <div className='px-4 md:px-8 my-6'>
                 {
                     loading ? <>
-                       <LoadingSpinner/>
+                       <div className='py-10'><SpinnerForClientCompo/></div>
                     </> : activeTab === 'my-ideas' && <div className=' grid grid-cols-1 gap-4'>
                         {
                             myIdeas.length > 0 ? <>
